@@ -36,11 +36,11 @@ export function buildLoaders({ isDev }: BuildOptions) {
 			},
 			{
 				loader: 'sass-loader',
-				options: {
-					additionalData: `
-						@use "@/app/styles/mixins/mixins" as *;
-					`,
-				},
+				// options: {
+				// 	additionalData: `
+				// 		@use "@/app/styles/mixins/mixins" as *;
+				// 	`,
+				// },
 			},
 		],
 	};
