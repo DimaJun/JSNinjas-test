@@ -10,22 +10,6 @@ export function HeroesList() {
 			<HeroCard />
 			<HeroCard />
 			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
 		</div>
 	);
 }

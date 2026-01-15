@@ -1,5 +1,3 @@
-import { HeroTags } from '../HeroTags/HeroTags';
-
 import s from './HeroCard.module.scss';
 
 import { Card } from '@/shared/ui/Card';
@@ -15,14 +13,7 @@ export function HeroCard() {
 				rounded
 				size={65}
 			/>
-			<div className={s.info}>
-				<p className={s.nick}>Superman</p>
-				<p className={s.description}>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eligendi nostrum,
-					numquam ullam velit voluptas...
-				</p>
-				<HeroTags />
-			</div>
+			<p className={s.nick}>Superman</p>
 		</Card>
 	);
 }

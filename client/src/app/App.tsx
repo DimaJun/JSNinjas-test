@@ -1,5 +1,6 @@
 import { HeroSearch } from '@/features/HeroSearch';
 import { HeroesList } from '@/entities/Hero/ui/HeroesList/HeroesList';
+import { Pagination } from '@/features/Pagination';
 
 export function App() {
 	return (
@@ -7,6 +8,7 @@ export function App() {
 			<h1>superhero db</h1>
 			<HeroSearch />
 			<HeroesList />
+			<Pagination />
 		</div>
 	);
 }
