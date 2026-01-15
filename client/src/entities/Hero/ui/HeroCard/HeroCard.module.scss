@@ -1,0 +1,22 @@
+.Card {
+	display: flex;
+	//align-items: center;
+	gap: 16px;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.nick {
+	font-family: var(--font-family-accent), sans-serif;
+	font-size: var(--font-size-xl);
+	font-weight: 700;
+}
+
+.description {
+	font-family: var(--font-family-accent), sans-serif;
+	color: #ccc;
+}

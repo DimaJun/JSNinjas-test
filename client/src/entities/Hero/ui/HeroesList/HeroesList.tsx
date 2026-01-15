@@ -1,41 +1,31 @@
-import s from './HeroesList.module.scss';
+import { HeroCard } from '../HeroCard/HeroCard';
 
-import { Card } from '@/shared/ui/Card';
-import { Avatar } from '@/shared/ui/Avatar';
+import s from './HeroesList.module.scss';
 
 export function HeroesList() {
 	return (
 		<div className={s.List}>
-			<Card padding='16'>
-				<Avatar
-					size={65}
-					rounded
-				/>
-			</Card>
-			<Card padding='16'>
-				<Avatar
-					size={65}
-					rounded
-				/>
-			</Card>
-			<Card padding='16'>
-				<Avatar
-					size={65}
-					rounded
-				/>
-			</Card>
-			<Card padding='16'>
-				<Avatar
-					size={65}
-					rounded
-				/>
-			</Card>
-			<Card padding='16'>
-				<Avatar
-					size={65}
-					rounded
-				/>
-			</Card>
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
+			<HeroCard />
 		</div>
 	);
 }
