@@ -1,0 +1,12 @@
+.top {
+	font-size: var(--font-size-xl);
+	font-weight: 700;
+	display: flex;
+	gap: 12px;
+
+	margin-bottom: 20px;
+
+	span {
+		color: var(--color-sky);
+	}
+}

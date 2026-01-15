@@ -1,3 +1,34 @@
 .CreateHeroPage {
-  /* styles for CreateHeroPage */
+	/* styles for CreateHeroPage */
+}
+
+.backToList {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	font-size: var(--font-size-l);
+
+	transition: var(--transition-duration);
+
+	&:hover {
+		color: var(--color-neutral);
+	}
+
+	&:hover .icon {
+		transition: var(--transition-duration);
+		stroke: var(--color-neutral);
+
+		transform: translateX(-5px);
+	}
+}
+
+.pageName {
+	margin-top: 4px;
+	margin-bottom: 16px;
+
+	font-family: var(--font-family-accent), sans-serif;
+	font-size: var(--font-size-xl);
+	font-weight: 700;
+	color: var(--color-sky);
 }
