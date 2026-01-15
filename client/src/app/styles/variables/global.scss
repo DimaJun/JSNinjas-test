@@ -1,18 +1,28 @@
 :root {
-  --font-family-primary: 'Inter';
-  --font-family-accent: 'Montserrat';
+	--font-family-primary: 'Inter';
+	--font-family-accent: 'Montserrat';
 
-  --font-size-s: 12px;
-  --font-size-m: 16px;
-  --font-size-l: 20px;
-  --font-size-xl: 28px;
+	--font-size-s: 12px;
+	--font-size-m: 16px;
+	--font-size-l: 20px;
+	--font-size-xl: 28px;
 
-  --app-bg: linear-gradient( to bottom right, #0f172a, #581c87, #0f172a);
+	--transition-duration: 0.2s;
 
-  --color-primary: #ffffff;
-  --color-accent: #b83ccf;
+	// COLORS
+	--app-bg: linear-gradient(to bottom right, #0f172a, #581c87, #0f172a);
 
-  --color-success: #7BC8A4;
-  --color-warn:    #F3D37A;
-  --color-error:   #D98C8C;
+	--color-primary: #ffffff;
+	--color-accent: #9333ea;
+	--color-accent-hover: #782ac2;
+
+	--color-success: #7bc8a4;
+	--color-warn: #f3d37a;
+	--color-error: #d98c8c;
+
+	// Input
+	--input-outline: 1px solid rgba(130, 130, 130, 0.5);
+	--input-outline-focus: 2px solid #8b5cf6;
+	--input-background: rgba(71, 85, 105, 0.5);
+	--input-placeholder: rgb(144, 144, 144);
 }

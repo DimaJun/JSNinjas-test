@@ -1,0 +1,35 @@
+.Button {
+	cursor: pointer;
+	width: fit-content;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	transition: var(--transition-duration);
+
+	font-weight: 500;
+
+	background-color: var(--color-accent);
+
+	&:hover {
+		background-color: var(--color-accent-hover);
+	}
+
+	&:active {
+		transform: scale(0.98);
+	}
+
+	&:focus {
+		outline: 1px solid var(--color-primary);
+	}
+}
+
+.p8 {
+	padding: 8px 20px;
+}
+.p12 {
+	padding: 12px 20px;
+}
+.p16 {
+	padding: 16px 20px;
+}

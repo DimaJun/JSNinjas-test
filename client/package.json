@@ -50,6 +50,7 @@
         "webpack-dev-server": "^5.2.2"
     },
     "dependencies": {
+        "lucide-react": "^0.562.0",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
         "react-router": "^7.9.6"

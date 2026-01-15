@@ -4,6 +4,8 @@
   border: 0;
   font: inherit;
   vertical-align: baseline;
+  box-sizing: border-box;
+  color: var(--color-primary);
 }
 
 article, aside, details, figcaption, figure,
