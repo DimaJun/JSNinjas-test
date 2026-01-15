@@ -15,7 +15,7 @@ export const multerConfig = {
 	},
 	fileFilter: (req: Request, file: Express.Multer.File, cb) => {
 		if (!file.mimetype.match(/\/(jpeg|jpg|png|webp)$/)) {
-			cb(new Error('Можно загружать только фотографии!'), false);
+			cb(new Error('You can only upload photos!'), false);
 		}
 		cb(null, true);
 	},
