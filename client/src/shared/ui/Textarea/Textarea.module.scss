@@ -1,0 +1,24 @@
+.Textarea {
+	width: 100%;
+	padding: 10px 14px;
+	border-radius: 10px;
+	transition: var(--transition-duration);
+
+	background-color: var(--input-background);
+	outline: var(--input-outline);
+
+	&::placeholder {
+		color: var(--input-placeholder);
+	}
+
+	&:focus,
+	&:hover {
+		outline: var(--input-outline-focus);
+	}
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}

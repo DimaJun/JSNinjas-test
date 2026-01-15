@@ -14,7 +14,7 @@ export function Input(props: InputProps) {
 
 	if (label) {
 		return (
-			<div className={classNames(s.wrapper, {}, [className])}>
+			<div className={s.wrapper}>
 				<p className={s.label}>{label}</p>
 				<input
 					className={classNames(s.Input, {}, [className])}
