@@ -1,0 +1,17 @@
+.photos {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	gap: 16px;
+
+	margin-bottom: 16px;
+}
+
+.limit {
+	margin-bottom: 16px;
+}
+
+.requirements {
+	font-size: var(--font-size-s);
+	color: var(--color-neutral);
+}
