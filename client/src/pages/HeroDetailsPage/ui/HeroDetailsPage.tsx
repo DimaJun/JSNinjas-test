@@ -1,5 +1,5 @@
 import { ArrowLeft, SquarePen } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link, useParams } from 'react-router';
 
 import s from './HeroDetailsPage.module.scss';
 
@@ -7,8 +7,21 @@ import { classNames } from '@/shared/helpers/classNames/classNames';
 import { getMainRoute } from '@/shared/config/router';
 import { Button } from '@/shared/ui/Button';
 import { HeroDetails } from '@/entities/Hero';
+import { useGetHeroByIdQuery } from '@/entities/Hero/api/heroes';
 
 export function HeroDetailsPage() {
+	const { id } = useParams<{ id: string }>();
+
+	const { data: hero, isError } = useGetHeroByIdQuery({ id }, { skip: !id });
+
+	if (!id) {
+		return <div className={s.not_found}>Superhero not found!</div>;
+	}
+
+	if (isError || !hero) {
+		return <div className={s.not_found}>Superhero not found!</div>;
+	}
+
 	return (
 		<div className={classNames(s.HeroDetails, {}, [])}>
 			<div className={s.top}>
@@ -26,7 +39,7 @@ export function HeroDetailsPage() {
 					Edit
 				</Button>
 			</div>
-			<HeroDetails />
+			<HeroDetails hero={hero} />
 		</div>
 	);
 }

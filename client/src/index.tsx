@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router';
 
+import { StoreProvider } from '@/app/providers/store';
 import { App } from '@/app/App';
 
 import '@/app/styles/main.scss';
@@ -12,7 +13,9 @@ if (!container) {
 }
 
 createRoot(container).render(
-	<Router>
-		<App />
-	</Router>
+	<StoreProvider>
+		<Router>
+			<App />
+		</Router>
+	</StoreProvider>
 );

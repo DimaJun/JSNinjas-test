@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import s from './Pagination.module.scss';
@@ -6,16 +5,21 @@ import s from './Pagination.module.scss';
 import { classNames } from '@/shared/helpers/classNames/classNames';
 import { Button } from '@/shared/ui/Button';
 
-const maxPages = 5;
-export function Pagination() {
-	const [page, setPage] = useState(1);
+interface PaginationProps {
+	page: number;
+	totalPages: number;
+	onChange: (page: number) => void;
+}
+
+export function Pagination(props: PaginationProps) {
+	const { page, totalPages, onChange } = props;
 
 	return (
 		<div className={classNames(s.Pagination, {}, [])}>
 			<Button
 				className={s.btn}
 				padding='8'
-				onClick={() => setPage((prev) => prev - 1)}
+				onClick={() => onChange(page - 1)}
 				disabled={page === 1}
 			>
 				<ChevronLeft />
@@ -26,8 +30,8 @@ export function Pagination() {
 			<Button
 				className={s.btn}
 				padding='8'
-				onClick={() => setPage((prev) => prev + 1)}
-				disabled={page === maxPages}
+				onClick={() => onChange(page + 1)}
+				disabled={page === totalPages}
 			>
 				<ChevronRight />
 			</Button>

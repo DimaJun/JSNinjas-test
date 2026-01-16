@@ -2,14 +2,23 @@ import { HeroCard } from '../HeroCard/HeroCard';
 
 import s from './HeroesList.module.scss';
 
-export function HeroesList() {
+import { Hero } from '@/entities/Hero';
+
+interface HeroesListProps {
+	heroes?: Hero[];
+}
+
+export function HeroesList({ heroes }: HeroesListProps) {
 	return (
 		<div className={s.List}>
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
-			<HeroCard />
+			{heroes?.map(({ id, nickname, images }) => (
+				<HeroCard
+					key={id}
+					id={id}
+					nickname={nickname}
+					avatar={images[0]}
+				/>
+			))}
 		</div>
 	);
 }

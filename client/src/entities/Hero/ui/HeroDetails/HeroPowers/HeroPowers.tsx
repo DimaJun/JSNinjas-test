@@ -1,12 +1,17 @@
 import { Zap } from 'lucide-react';
 
 import { HeroFormSectionTop } from '../../HeroForm/HeroFormSectionTop/HeroFormSectionTop';
+import { HeroTags } from '../../HeroForm/HeroTags/HeroTags';
 
 import s from './HeroPowers.module.scss';
 
 import { Card } from '@/shared/ui/Card';
 
-export function HeroPowers() {
+interface HeroPowersProps {
+	powers: string[];
+}
+
+export function HeroPowers({ powers }: HeroPowersProps) {
 	return (
 		<Card
 			className={s.powers}
@@ -16,7 +21,11 @@ export function HeroPowers() {
 				text='Superpowers'
 				Icon={Zap}
 			/>
-			<p className={s.noPowers}>Superpowers not specified</p>
+			{powers.length > 1 ? (
+				<HeroTags tags={powers} />
+			) : (
+				<p className={s.noPowers}>Superpowers not specified</p>
+			)}
 		</Card>
 	);
 }

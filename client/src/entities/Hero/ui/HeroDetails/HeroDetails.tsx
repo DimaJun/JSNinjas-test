@@ -6,15 +6,31 @@ import { HeroStory } from './HeroStory/HeroStory';
 import { HeroPowers } from './HeroPowers/HeroPowers';
 import { HeroInfo } from './HeroInfo/HeroInfo';
 
-export function HeroDetails() {
+import { Hero } from '@/entities/Hero';
+
+interface HeroDetailsProps {
+	hero: Hero;
+}
+
+export function HeroDetails({ hero }: HeroDetailsProps) {
+	const { nickname, realName, images, originDescription, catchPhrase, superpowers } = hero;
+
 	return (
 		<div className={s.details}>
-			<HeroDetailsTop />
-			<HeroPhotos />
-			<HeroCatchPhrase />
-			<HeroStory />
-			<HeroPowers />
-			<HeroInfo />
+			<HeroDetailsTop
+				nickname={nickname}
+				realName={realName}
+			/>
+			<HeroPhotos images={images} />
+			<HeroCatchPhrase phrase={catchPhrase} />
+			<HeroStory story={originDescription} />
+			<HeroPowers powers={superpowers} />
+			<HeroInfo
+				nickname={nickname}
+				realName={realName}
+				photosCount={images.length}
+				powersCount={superpowers.length}
+			/>
 		</div>
 	);
 }

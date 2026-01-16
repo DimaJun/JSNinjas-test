@@ -2,13 +2,17 @@ import s from './HeroCatchPhrase.module.scss';
 
 import { Card } from '@/shared/ui/Card';
 
-export function HeroCatchPhrase() {
+interface HeroCatchPhraseProps {
+	phrase: string;
+}
+
+export function HeroCatchPhrase({ phrase }: HeroCatchPhraseProps) {
 	return (
 		<Card
 			className={s.wrapper}
 			padding='16'
 		>
-			<p className={s.phrase}>Truth, Justice, and the American Way</p>
+			<p className={s.phrase}>{phrase}</p>
 		</Card>
 	);
 }

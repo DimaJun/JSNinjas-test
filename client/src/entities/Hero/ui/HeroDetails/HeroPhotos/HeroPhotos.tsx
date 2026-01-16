@@ -1,10 +1,32 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
 
 import s from './HeroPhotos.module.scss';
 
 import { Card } from '@/shared/ui/Card';
+import { serverStaticImagesUrl } from '@/entities/Hero/consts/hero';
 
-export function HeroPhotos() {
+interface HeroPhotosProps {
+	images: string[];
+}
+
+export function HeroPhotos({ images }: HeroPhotosProps) {
+	const [index, setIndex] = useState(0);
+
+	if (!images.length) {
+		return <div className={s.noPhoto}>No photos provided</div>;
+	}
+
+	const currentPhoto = `${serverStaticImagesUrl}/${images[index]}`;
+
+	const prev = () => {
+		setIndex((i) => (i === 0 ? images.length - 1 : i - 1));
+	};
+
+	const next = () => {
+		setIndex((i) => (i === images.length - 1 ? 0 : i + 1));
+	};
+
 	return (
 		<Card
 			className={s.gallery}
@@ -12,22 +34,30 @@ export function HeroPhotos() {
 		>
 			<div className={s.wrapper}>
 				<img
-					src=''
-					alt='Some photo'
+					src={currentPhoto}
+					alt='Hero photo'
 				/>
-				<button
-					className={s.prev}
-					type='button'
-				>
-					<ChevronLeft />
-				</button>
-				<button
-					className={s.next}
-					type='button'
-				>
-					<ChevronRight />
-				</button>
-				<p className={s.counter}>1 / 4</p>
+				{images.length > 1 && (
+					<>
+						<button
+							className={s.prev}
+							type='button'
+							onClick={prev}
+						>
+							<ChevronLeft />
+						</button>
+						<button
+							className={s.next}
+							type='button'
+							onClick={next}
+						>
+							<ChevronRight />
+						</button>
+					</>
+				)}
+				<p className={s.counter}>
+					{index + 1} / {images.length}
+				</p>
 			</div>
 		</Card>
 	);

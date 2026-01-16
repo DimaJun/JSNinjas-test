@@ -26,6 +26,7 @@ export function Avatar(props: AvatarProps) {
 				width: size + 'px',
 				height: size + 'px',
 			}}
+			loading='lazy'
 			{...rest}
 		/>
 	);

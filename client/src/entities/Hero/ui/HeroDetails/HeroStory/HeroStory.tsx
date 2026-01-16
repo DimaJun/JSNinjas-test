@@ -6,7 +6,11 @@ import s from './HeroStory.module.scss';
 
 import { Card } from '@/shared/ui/Card';
 
-export function HeroStory() {
+interface HeroStoryProps {
+	story: string;
+}
+
+export function HeroStory({ story }: HeroStoryProps) {
 	return (
 		<Card
 			className={s.story}
@@ -16,16 +20,7 @@ export function HeroStory() {
 				text='Origin description'
 				Icon={BookOpen}
 			/>
-			<p className={s.description}>
-				He was born Kal-El on the planet Krypton, before being rocketed to Earth as an
-				infant by his scientist father Jor-El, moments before Krypton`s destruction. He was
-				born Kal-El on the planet Krypton, before being rocketed to Earth as an infant by
-				his scientist father Jor-El, moments before Krypton`s destruction. He was born
-				Kal-El on the planet Krypton, before being rocketed to Earth as an infant by his
-				scientist father Jor-El, moments before Krypton`s destruction. He was born Kal-El on
-				the planet Krypton, before being rocketed to Earth as an infant by his scientist
-				father Jor-El, moments before Krypton`s destruction.
-			</p>
+			<p className={s.description}>{story}</p>
 		</Card>
 	);
 }
