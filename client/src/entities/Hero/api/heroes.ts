@@ -27,9 +27,16 @@ export const heroApi = baseApi.injectEndpoints({
 				},
 			}),
 		}),
+		removeHero: builder.mutation<void, { id: string }>({
+			query: ({ id }) => ({
+				url: `/superhero/remove/${id}`,
+				method: 'DELETE',
+			}),
+		}),
 	}),
 });
 
 export const { useGetAllHeroesQuery } = heroApi;
 export const { useGetHeroByIdQuery } = heroApi;
 export const { useCreateHeroMutation } = heroApi;
+export const { useRemoveHeroMutation } = heroApi;
