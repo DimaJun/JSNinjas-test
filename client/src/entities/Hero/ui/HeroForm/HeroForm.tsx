@@ -1,10 +1,9 @@
 import { Save } from 'lucide-react';
 
-import { HeroFormMain } from '../HeroFormMain/HeroFormMain';
-import { HeroFormStory } from '../HeroFormStory/HeroFormStory';
-import { HeroFormPowers } from '../HeroFormPowers/HeroFormPowers';
-import { HeroFormPhotos } from '../HeroFormPhotos/HeroFormPhotos';
-
+import { HeroFormMain } from './HeroFormMain/HeroFormMain';
+import { HeroFormStory } from './HeroFormStory/HeroFormStory';
+import { HeroFormPowers } from './HeroFormPowers/HeroFormPowers';
+import { HeroFormPhotos } from './HeroFormPhotos/HeroFormPhotos';
 import s from './HeroForm.module.scss';
 
 import { Button } from '@/shared/ui/Button';

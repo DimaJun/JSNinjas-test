@@ -9,7 +9,7 @@ import {
 } from '@/shared/config/router';
 import { MainPage } from '@/pages/MainPage';
 import { CreateHeroPage } from '@/pages/CreateHeroPage';
-import { HeroDetails } from '@/pages/HeroDetails';
+import { HeroDetailsPage } from '@/pages/HeroDetailsPage';
 import { EditHeroPage } from '@/pages/EditHeroPage';
 
 export interface RouteItem {
@@ -28,7 +28,7 @@ export const routeConfig: Record<AppRoutes, RouteItem> = {
 	},
 	[AppRoutes.HERO_DETAILS]: {
 		path: getHeroDetailsRoute(),
-		element: <HeroDetails />,
+		element: <HeroDetailsPage />,
 	},
 	[AppRoutes.HERO_EDIT]: {
 		path: getHeroEditRoute(),

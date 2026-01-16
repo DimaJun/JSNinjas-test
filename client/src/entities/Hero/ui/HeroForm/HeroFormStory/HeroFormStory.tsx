@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
+import { HeroFormSectionTop } from '../HeroFormSectionTop/HeroFormSectionTop';
+
 import s from './HeroFormStory.module.scss';
 
 import { Card } from '@/shared/ui/Card';
-import { HeroFormSectionTop } from '@/entities/Hero/ui/HeroFormSectionTop/HeroFormSectionTop';
 import { Textarea } from '@/shared/ui/Textarea';
 
 export function HeroFormStory() {

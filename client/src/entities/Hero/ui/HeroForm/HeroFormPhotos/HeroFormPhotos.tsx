@@ -3,10 +3,10 @@ import { ChangeEvent, useState } from 'react';
 import { HeroFormSectionTop } from '../HeroFormSectionTop/HeroFormSectionTop';
 
 import s from './HeroFormPhotos.module.scss';
+import { ImagePreview } from './ImagePreview/ImagePreview';
+import { UploadPlaceholder } from './UploadPlaceholder/UploadPlaceholder';
 
 import { Card } from '@/shared/ui/Card';
-import { ImagePreview } from '@/entities/Hero/ui/HeroFormPhotos/ImagePreview/ImagePreview';
-import { UploadPlaceholder } from '@/entities/Hero/ui/HeroFormPhotos/UploadPlaceholder/UploadPlaceholder';
 
 interface ImageItem {
 	id: string;

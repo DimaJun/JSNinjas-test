@@ -1,0 +1,41 @@
+.HeroDetails {
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.right {
+		display: flex;
+		gap: 8px;
+	}
+}
+
+.edit {
+	padding: 10px 18px;
+}
+
+.backToList {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	font-size: var(--font-size-l);
+
+	transition: var(--transition-duration);
+
+	&:hover {
+		color: var(--color-neutral);
+	}
+
+	&:hover .icon {
+		transition: var(--transition-duration);
+		stroke: var(--color-neutral);
+
+		transform: translateX(-5px);
+	}
+}

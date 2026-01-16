@@ -1,0 +1,27 @@
+.wrapper {
+	width: 100%;
+}
+
+.phrase {
+	font-size: var(--font-size-xl);
+	font-style: italic;
+	padding-left: 30px;
+
+	position: relative;
+
+	&::before {
+		content: '"';
+		position: absolute;
+		font-size: 36px;
+		left: 0;
+		color: var(--color-success);
+	}
+
+	&::after {
+		content: '"';
+		position: absolute;
+		font-size: 36px;
+		right: 0;
+		color: var(--color-success);
+	}
+}
