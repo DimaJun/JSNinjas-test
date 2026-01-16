@@ -17,8 +17,19 @@ export const heroApi = baseApi.injectEndpoints({
 				method: 'GET',
 			}),
 		}),
+		createHero: builder.mutation<{ id: string }, FormData>({
+			query: (formData) => ({
+				url: `/superhero/create`,
+				method: 'POST',
+				body: formData,
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			}),
+		}),
 	}),
 });
 
 export const { useGetAllHeroesQuery } = heroApi;
 export const { useGetHeroByIdQuery } = heroApi;
+export const { useCreateHeroMutation } = heroApi;

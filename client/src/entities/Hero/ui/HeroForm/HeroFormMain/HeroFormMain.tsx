@@ -1,11 +1,21 @@
 import { HeroFormSectionTop } from '../HeroFormSectionTop/HeroFormSectionTop';
+import { HeroFormChange } from '../HeroForm';
 
 import s from './HeroFormMain.module.scss';
 
 import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
 
-export function HeroFormMain() {
+interface HeroFormMainProps {
+	nickname: string;
+	realName: string;
+	catchPhrase: string;
+	onChange: HeroFormChange;
+}
+
+export function HeroFormMain(props: HeroFormMainProps) {
+	const { nickname, realName, catchPhrase, onChange } = props;
+
 	return (
 		<Card
 			className={s.formSection}
@@ -19,14 +29,20 @@ export function HeroFormMain() {
 				<Input
 					label='Superhero nickname'
 					placeholder='Superman'
+					value={nickname}
+					onChange={(e) => onChange('nickname', e.target.value)}
 				/>
 				<Input
 					label='Real name'
 					placeholder='Clark Kent'
+					value={realName}
+					onChange={(e) => onChange('realName', e.target.value)}
 				/>
 				<Input
 					label='Catch phrase'
 					placeholder='Look, up in the sky, its a bird, its a plane, its Superman!'
+					value={catchPhrase}
+					onChange={(e) => onChange('catchPhrase', e.target.value)}
 				/>
 			</div>
 		</Card>

@@ -7,3 +7,7 @@ export interface Hero {
 	catchPhrase: string;
 	images: string[];
 }
+
+export interface CreateHeroFormData extends Omit<Hero, 'images' | 'id'> {
+	images: File[];
+}

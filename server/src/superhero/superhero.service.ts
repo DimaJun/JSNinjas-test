@@ -44,10 +44,10 @@ export class SuperheroService {
 
 	async createSuperhero(dto: CreateSuperheroDto) {
 		try {
-			await this.prisma.superhero.create({
+			const hero = await this.prisma.superhero.create({
 				data: dto,
 			});
-			return { message: 'Success!' };
+			return { id: hero.id };
 		} catch (e) {
 			if (e instanceof PrismaClientKnownRequestError && e.code === 'P2002') {
 				throw new BadRequestException('Such a superhero already exists!');

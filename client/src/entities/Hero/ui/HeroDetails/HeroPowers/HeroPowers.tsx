@@ -21,7 +21,7 @@ export function HeroPowers({ powers }: HeroPowersProps) {
 				text='Superpowers'
 				Icon={Zap}
 			/>
-			{powers.length > 1 ? (
+			{powers.length > 0 ? (
 				<HeroTags tags={powers} />
 			) : (
 				<p className={s.noPowers}>Superpowers not specified</p>

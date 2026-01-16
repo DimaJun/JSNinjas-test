@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { HeroFormSectionTop } from '../HeroFormSectionTop/HeroFormSectionTop';
 import { HeroTags } from '../HeroTags/HeroTags';
+import { HeroFormChange } from '../HeroForm';
 
 import s from './HeroFormPowers.module.scss';
 
@@ -10,12 +11,18 @@ import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
 
-export function HeroFormPowers() {
+interface HeroFormPowersProps {
+	powers: string[];
+	onChange: HeroFormChange;
+}
+
+export function HeroFormPowers(props: HeroFormPowersProps) {
+	const { powers, onChange } = props;
 	const [tag, setTag] = useState('');
-	const [tags, setTags] = useState<string[]>([]);
 
 	const onTagAdd = () => {
-		setTags((prev) => [...prev, tag]);
+		if (!tag.trim()) return;
+		onChange('superpowers', [...powers, tag.trim()]);
 		setTag('');
 	};
 
@@ -41,7 +48,7 @@ export function HeroFormPowers() {
 			</div>
 			<HeroTags
 				className={s.powers}
-				tags={tags}
+				tags={powers}
 			/>
 		</Card>
 	);

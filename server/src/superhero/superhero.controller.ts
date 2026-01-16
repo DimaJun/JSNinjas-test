@@ -40,16 +40,18 @@ export class SuperheroController {
 	}
 
 	@Post('/create')
-	@UseInterceptors(FilesInterceptor('files', 6, multerConfig))
+	@UseInterceptors(FilesInterceptor('images', 6, multerConfig))
 	@HttpCode(HttpStatus.OK)
 	async createSuperhero(
 		@Body() body: Omit<CreateSuperheroDto, 'images'>,
 		@UploadedFiles() images: Express.Multer.File[],
 	) {
 		const imagesPaths = this.filesService.getSavedFilesPaths(images);
+		const superpwrs = Array.isArray(body.superpowers) ? body.superpowers : [body.superpowers];
 
 		const dto: CreateSuperheroDto = {
 			...body,
+			superpowers: superpwrs,
 			images: imagesPaths,
 		};
 
@@ -57,7 +59,7 @@ export class SuperheroController {
 	}
 
 	@Patch('/update/:id')
-	@UseInterceptors(FilesInterceptor('files', 6, multerConfig))
+	@UseInterceptors(FilesInterceptor('images', 6, multerConfig))
 	@HttpCode(HttpStatus.OK)
 	async updateSuperhero(
 		@Param('id') id: string,

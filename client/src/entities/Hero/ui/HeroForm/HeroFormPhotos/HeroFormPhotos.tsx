@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 
 import { HeroFormSectionTop } from '../HeroFormSectionTop/HeroFormSectionTop';
 
@@ -14,28 +14,34 @@ interface ImageItem {
 	preview: string;
 }
 
-export function HeroFormPhotos() {
-	const [images, setImages] = useState<ImageItem[]>([]);
+interface HeroFormPhotosProps {
+	images: File[];
+	onChange: (files: File[]) => void;
+}
+
+export function HeroFormPhotos(props: HeroFormPhotosProps) {
+	const { images, onChange } = props;
+
+	const imageItems: ImageItem[] = images.map((file) => ({
+		id: crypto.randomUUID(),
+		file,
+		preview: URL.createObjectURL(file),
+	}));
 
 	const onSelectItems = (e: ChangeEvent<HTMLInputElement>) => {
 		const files = e.target.files;
 		if (!files) return;
 
-		const selectedFiles = Array.from(files);
+		const newFiles = Array.from(files);
 
-		const newImages: ImageItem[] = selectedFiles.map((file) => ({
-			id: crypto.randomUUID(),
-			file,
-			preview: URL.createObjectURL(file),
-		}));
-
-		setImages((prev) => [...prev, ...newImages]);
+		onChange([...images, ...newFiles]);
 
 		e.target.value = '';
 	};
 
 	const removeImage = (index: number) => {
-		setImages((prev) => prev.filter((_, i) => i !== index));
+		URL.revokeObjectURL(imageItems[index].id);
+		onChange(images.filter((_, i) => i !== index));
 	};
 
 	return (
@@ -46,7 +52,7 @@ export function HeroFormPhotos() {
 			/>
 			<p className={s.limit}>{images.length}/6 photos uploaded</p>
 			<div className={s.photos}>
-				{images.map(({ id, preview }, index) => (
+				{imageItems.map(({ id, preview }, index) => (
 					<ImagePreview
 						key={id}
 						preview={preview}
