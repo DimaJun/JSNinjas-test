@@ -2,7 +2,7 @@ import { ImgHTMLAttributes } from 'react';
 
 import s from './Avatar.module.scss';
 
-import { classNames, Mods } from '@/shared/helpers/classNames/classNames';
+import { classNames, Mods } from '@/shared/helpers';
 
 interface AvatarProps extends ImgHTMLAttributes<HTMLImageElement> {
 	className?: string;

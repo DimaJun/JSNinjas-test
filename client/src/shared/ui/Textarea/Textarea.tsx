@@ -2,7 +2,7 @@ import { TextareaHTMLAttributes } from 'react';
 
 import s from './Textarea.module.scss';
 
-import { classNames } from '@/shared/helpers/classNames/classNames';
+import { classNames } from '@/shared/helpers';
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	className?: string;

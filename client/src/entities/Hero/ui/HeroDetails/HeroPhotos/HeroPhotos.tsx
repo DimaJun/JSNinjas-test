@@ -1,10 +1,11 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 
+import { serverStaticImagesUrl } from '../../../consts/hero';
+
 import s from './HeroPhotos.module.scss';
 
 import { Card } from '@/shared/ui/Card';
-import { serverStaticImagesUrl } from '@/entities/Hero/consts/hero';
 
 interface HeroPhotosProps {
 	images: string[];

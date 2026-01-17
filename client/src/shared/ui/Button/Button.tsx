@@ -3,7 +3,7 @@ import { LucideIcon } from 'lucide-react';
 
 import s from './Button.module.scss';
 
-import { classNames } from '@/shared/helpers/classNames/classNames';
+import { classNames } from '@/shared/helpers';
 
 type ButtonPadding = '8' | '12' | '16';
 

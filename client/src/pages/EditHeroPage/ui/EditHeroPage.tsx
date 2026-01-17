@@ -1,7 +1,8 @@
 import s from './EditHeroPage.module.scss';
 
-import { classNames } from '@/shared/helpers/classNames/classNames';
+import { Page } from '@/shared/ui/Page';
+import { classNames } from '@/shared/helpers';
 
 export function EditHeroPage() {
-	return <div className={classNames(s.EditHeroPage, {}, [])}>EditHeroPage component</div>;
+	return <Page className={classNames(s.EditHeroPage, {}, [])}>EditHeroPage component</Page>;
 }

@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 
 import s from './Card.module.scss';
 
-import { classNames } from '@/shared/helpers/classNames/classNames';
+import { classNames } from '@/shared/helpers';
 
 type CardPadding = '8' | '16' | '24';
 

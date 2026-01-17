@@ -2,7 +2,7 @@ import { InputHTMLAttributes } from 'react';
 
 import s from './Input.module.scss';
 
-import { classNames } from '@/shared/helpers/classNames/classNames';
+import { classNames } from '@/shared/helpers';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	className?: string;

@@ -2,8 +2,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import s from './Pagination.module.scss';
 
-import { classNames } from '@/shared/helpers/classNames/classNames';
 import { Button } from '@/shared/ui/Button';
+import { classNames } from '@/shared/helpers';
 
 interface PaginationProps {
 	page: number;

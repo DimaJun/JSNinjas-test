@@ -2,10 +2,10 @@ import { useState } from 'react';
 
 import s from './MainPage.module.scss';
 
-import { classNames } from '@/shared/helpers/classNames/classNames';
 import { Pagination } from '@/features/Pagination';
 import { HeroesList, useGetAllHeroesQuery } from '@/entities/Hero';
 import { Page } from '@/shared/ui/Page';
+import { classNames } from '@/shared/helpers';
 
 const LIMIT = 5;
 

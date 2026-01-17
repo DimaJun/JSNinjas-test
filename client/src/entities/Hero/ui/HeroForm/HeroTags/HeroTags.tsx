@@ -1,6 +1,6 @@
 import s from './HeroTags.module.scss';
 
-import { classNames } from '@/shared/helpers/classNames/classNames';
+import { classNames } from '@/shared/helpers';
 
 interface HeroTagsProps {
 	className?: string;

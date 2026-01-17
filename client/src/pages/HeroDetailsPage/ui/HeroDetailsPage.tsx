@@ -3,11 +3,11 @@ import { Link, useNavigate, useParams } from 'react-router';
 
 import s from './HeroDetailsPage.module.scss';
 
-import { classNames } from '@/shared/helpers/classNames/classNames';
 import { getMainRoute } from '@/shared/config/router';
 import { Button } from '@/shared/ui/Button';
 import { HeroDetails, useGetHeroByIdQuery, useRemoveHeroMutation } from '@/entities/Hero';
 import { Page } from '@/shared/ui/Page';
+import { classNames } from '@/shared/helpers';
 
 export function HeroDetailsPage() {
 	const { id } = useParams<{ id: string }>();

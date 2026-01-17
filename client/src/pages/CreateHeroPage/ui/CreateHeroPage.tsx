@@ -3,10 +3,10 @@ import { ArrowLeft } from 'lucide-react';
 
 import s from './CreateHeroPage.module.scss';
 
-import { classNames } from '@/shared/helpers/classNames/classNames';
 import { getMainRoute } from '@/shared/config/router';
 import { HeroForm } from '@/entities/Hero';
 import { Page } from '@/shared/ui/Page';
+import { classNames } from '@/shared/helpers';
 
 export function CreateHeroPage() {
 	return (

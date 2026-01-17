@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 
 import s from './Page.module.scss';
 
-import { classNames } from '@/shared/helpers/classNames/classNames';
+import { classNames } from '@/shared/helpers';
 
 interface PageProps extends PropsWithChildren {
 	className?: string;
