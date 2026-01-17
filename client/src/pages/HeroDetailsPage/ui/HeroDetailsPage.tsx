@@ -6,8 +6,8 @@ import s from './HeroDetailsPage.module.scss';
 import { classNames } from '@/shared/helpers/classNames/classNames';
 import { getMainRoute } from '@/shared/config/router';
 import { Button } from '@/shared/ui/Button';
-import { HeroDetails } from '@/entities/Hero';
-import { useGetHeroByIdQuery, useRemoveHeroMutation } from '@/entities/Hero/api/heroes';
+import { HeroDetails, useGetHeroByIdQuery, useRemoveHeroMutation } from '@/entities/Hero';
+import { Page } from '@/shared/ui/Page';
 
 export function HeroDetailsPage() {
 	const { id } = useParams<{ id: string }>();
@@ -31,7 +31,7 @@ export function HeroDetailsPage() {
 	};
 
 	return (
-		<div className={classNames(s.HeroDetails, {}, [])}>
+		<Page className={classNames(s.HeroDetails, {}, [])}>
 			<div className={s.top}>
 				<Link
 					className={s.backToList}
@@ -58,6 +58,6 @@ export function HeroDetailsPage() {
 				</div>
 			</div>
 			<HeroDetails hero={hero} />
-		</div>
+		</Page>
 	);
 }

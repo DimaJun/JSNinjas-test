@@ -5,6 +5,7 @@ import s from './MainPage.module.scss';
 import { classNames } from '@/shared/helpers/classNames/classNames';
 import { Pagination } from '@/features/Pagination';
 import { HeroesList, useGetAllHeroesQuery } from '@/entities/Hero';
+import { Page } from '@/shared/ui/Page';
 
 const LIMIT = 5;
 
@@ -17,7 +18,7 @@ export function MainPage() {
 	});
 
 	return (
-		<div className={classNames(s.MainPage, {}, [])}>
+		<Page className={classNames(s.MainPage, {}, [])}>
 			<HeroesList heroes={data?.heroes} />
 			{data && (
 				<Pagination
@@ -26,6 +27,6 @@ export function MainPage() {
 					onChange={setPage}
 				/>
 			)}
-		</div>
+		</Page>
 	);
 }

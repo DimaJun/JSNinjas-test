@@ -11,7 +11,7 @@ import { HeroFormPhotos } from './HeroFormPhotos/HeroFormPhotos';
 import s from './HeroForm.module.scss';
 
 import { Button } from '@/shared/ui/Button';
-import { useCreateHeroMutation } from '@/entities/Hero/api/heroes';
+import { useCreateHeroMutation } from '@/entities/Hero';
 
 export type HeroFormChange = <K extends keyof CreateHeroFormData>(
 	field: K,

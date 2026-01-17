@@ -3,4 +3,9 @@ export { HeroForm } from './ui/HeroForm/HeroForm';
 export { HeroDetails } from './ui/HeroDetails/HeroDetails';
 
 export type { Hero } from './model/types/hero';
-export { useGetAllHeroesQuery } from './api/heroes';
+export {
+	useGetAllHeroesQuery,
+	useRemoveHeroMutation,
+	useCreateHeroMutation,
+	useGetHeroByIdQuery,
+} from './api/heroes';

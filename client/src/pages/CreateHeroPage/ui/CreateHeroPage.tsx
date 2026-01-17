@@ -6,10 +6,11 @@ import s from './CreateHeroPage.module.scss';
 import { classNames } from '@/shared/helpers/classNames/classNames';
 import { getMainRoute } from '@/shared/config/router';
 import { HeroForm } from '@/entities/Hero';
+import { Page } from '@/shared/ui/Page';
 
 export function CreateHeroPage() {
 	return (
-		<div className={classNames(s.CreateHeroPage, {}, [])}>
+		<Page className={classNames(s.CreateHeroPage, {}, [])}>
 			<Link
 				className={s.backToList}
 				to={getMainRoute()}
@@ -19,6 +20,6 @@ export function CreateHeroPage() {
 			</Link>
 			<h2 className={s.pageName}>Create a Superhero</h2>
 			<HeroForm />
-		</div>
+		</Page>
 	);
 }
