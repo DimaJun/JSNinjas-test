@@ -34,6 +34,10 @@ body {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	h1 {
@@ -64,6 +68,24 @@ body {
 			.icon {
 				stroke: var(--color-neutral);
 			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		h1 {
+			position: static;
+			transform: unset;
+			font-size: var(--font-size-xl);
+		}
+
+		.create {
+			margin-left: unset;
+		}
+	}
+
+	@media (max-width: 390px) {
+		h1 {
+			font-size: var(--font-size-l);
 		}
 	}
 }

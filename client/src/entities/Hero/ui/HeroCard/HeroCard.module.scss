@@ -14,6 +14,10 @@
 	font-family: var(--font-family-accent), sans-serif;
 	font-size: var(--font-size-xl);
 	font-weight: 700;
+
+	@media (max-width: 768px) {
+		font-size: var(--font-size-l);
+	}
 }
 
 .description {
