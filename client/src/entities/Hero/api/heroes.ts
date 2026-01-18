@@ -27,6 +27,16 @@ export const heroApi = baseApi.injectEndpoints({
 				},
 			}),
 		}),
+		updateHero: builder.mutation<Hero, { id: string; formData: FormData }>({
+			query: ({ id, formData }) => ({
+				url: `/superhero/update/${id}`,
+				method: 'PATCH',
+				body: formData,
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			}),
+		}),
 		removeHero: builder.mutation<void, { id: string }>({
 			query: ({ id }) => ({
 				url: `/superhero/remove/${id}`,
@@ -37,6 +47,7 @@ export const heroApi = baseApi.injectEndpoints({
 });
 
 export const { useGetAllHeroesQuery } = heroApi;
-export const { useGetHeroByIdQuery } = heroApi;
+export const { useGetHeroByIdQuery, useLazyGetHeroByIdQuery } = heroApi;
 export const { useCreateHeroMutation } = heroApi;
+export const { useUpdateHeroMutation } = heroApi;
 export const { useRemoveHeroMutation } = heroApi;

@@ -7,8 +7,8 @@ export class FileUploadService {
 	private readonly uploadPath = path.join(__dirname, '..', '..', '..', 'uploads');
 
 	constructor() {
-		if(!fs.existsSync(this.uploadPath)) {
-			fs.mkdirSync(this.uploadPath, { recursive: true })
+		if (!fs.existsSync(this.uploadPath)) {
+			fs.mkdirSync(this.uploadPath, { recursive: true });
 		}
 	}
 
@@ -17,16 +17,20 @@ export class FileUploadService {
 	}
 
 	deleteFiles(filenames: string[]) {
-		for(const filename of filenames) {
-			const fullPath = this.getAbsolutePath(filename);
-			if(fs.existsSync(fullPath)) {
-				fs.unlinkSync(fullPath)
+		for (const filename of filenames) {
+			if (!filename) continue;
+
+			const safeName = path.basename(filename);
+			const fullPath = this.getAbsolutePath(safeName);
+
+			if (fs.existsSync(fullPath) && fs.lstatSync(fullPath).isFile()) {
+				fs.unlinkSync(fullPath);
 			}
 		}
-		return {message: 'Success!'};
+		return { message: 'Success!' };
 	}
 
 	getSavedFilesPaths(files: Express.Multer.File[]): string[] {
-		return files.map(f => f.filename);
+		return files.map((f) => f.filename);
 	}
 }

@@ -8,7 +8,7 @@ import { UploadPlaceholder } from './UploadPlaceholder/UploadPlaceholder';
 
 import { Card } from '@/shared/ui/Card';
 
-interface ImageItem {
+export interface ImageItem {
 	id: string;
 	file: File;
 	preview: string;

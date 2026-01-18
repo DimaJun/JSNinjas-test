@@ -11,10 +11,11 @@ interface HeroFormMainProps {
 	realName: string;
 	catchPhrase: string;
 	onChange: HeroFormChange;
+	isEdit?: boolean;
 }
 
 export function HeroFormMain(props: HeroFormMainProps) {
-	const { nickname, realName, catchPhrase, onChange } = props;
+	const { nickname, realName, catchPhrase, onChange, isEdit = false } = props;
 
 	return (
 		<Card
@@ -29,6 +30,7 @@ export function HeroFormMain(props: HeroFormMainProps) {
 				<Input
 					label='Superhero nickname'
 					placeholder='Superman'
+					disabled={isEdit}
 					value={nickname}
 					onChange={(e) => onChange('nickname', e.target.value)}
 				/>

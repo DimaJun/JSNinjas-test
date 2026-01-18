@@ -2,19 +2,22 @@ import { X } from 'lucide-react';
 
 import s from './ImagePreview.module.scss';
 
+import { serverStaticImagesUrl } from '@/entities/Hero/consts/hero';
+
 interface ImagePreviewProps {
 	preview: string;
 	index: number;
+	isCurrent?: boolean;
 	onRemove: () => void;
 }
 
 export function ImagePreview(props: ImagePreviewProps) {
-	const { index, preview, onRemove } = props;
+	const { index, preview, onRemove, isCurrent = false } = props;
 	return (
 		<div className={s.preview}>
 			<img
 				className={s.image}
-				src={preview}
+				src={isCurrent ? `${serverStaticImagesUrl}/${preview}` : preview}
 				alt={`Preview ${index + 1}`}
 			/>
 			<button

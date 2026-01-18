@@ -11,8 +11,8 @@ export function HeroTags({ className, tags }: HeroTagsProps) {
 	return (
 		<ul className={classNames(s.list, {}, [className])}>
 			{tags.length > 0 &&
-				tags.map((tag) => (
-					<li key={tag}>
+				tags.map((tag, index) => (
+					<li key={`tag-${tag}-${index}`}>
 						<span className={s.tag}>{tag}</span>
 					</li>
 				))}

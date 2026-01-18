@@ -52,6 +52,7 @@ export function HeroDetailsPage() {
 					<Button
 						className={s.edit}
 						Icon={SquarePen}
+						onClick={() => navigate(`/hero/edit/${id}`)}
 					>
 						Edit
 					</Button>
