@@ -1,20 +1,20 @@
-import { HeroFormSectionTop } from '../HeroFormSectionTop/HeroFormSectionTop';
-import { HeroFormChange } from '../HeroForm';
+import { CreateHeroFormChange } from '../../model/types/create';
+import { FormSectionTop } from '../FormSectionTop/FormSectionTop';
 
-import s from './HeroFormMain.module.scss';
+import s from './FormMainInfo.module.scss';
 
 import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
 
-interface HeroFormMainProps {
+interface FormMainInfoProps {
 	nickname: string;
 	realName: string;
 	catchPhrase: string;
-	onChange: HeroFormChange;
+	onChange: CreateHeroFormChange;
 	isEdit?: boolean;
 }
 
-export function HeroFormMain(props: HeroFormMainProps) {
+export function FormMainInfo(props: FormMainInfoProps) {
 	const { nickname, realName, catchPhrase, onChange, isEdit = false } = props;
 
 	return (
@@ -22,7 +22,7 @@ export function HeroFormMain(props: HeroFormMainProps) {
 			className={s.formSection}
 			padding='24'
 		>
-			<HeroFormSectionTop
+			<FormSectionTop
 				num={1}
 				text='Basic information'
 			/>

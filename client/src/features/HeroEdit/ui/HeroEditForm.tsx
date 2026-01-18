@@ -2,25 +2,19 @@ import { useNavigate } from 'react-router';
 import { FormEvent, useEffect, useState } from 'react';
 import { Save } from 'lucide-react';
 
-import { EditHeroFormData, Hero } from '../../model/types/hero';
-import { HeroFormMain } from '../HeroForm/HeroFormMain/HeroFormMain';
-import { HeroFormStory } from '../HeroForm/HeroFormStory/HeroFormStory';
-import { HeroFormPowers } from '../HeroForm/HeroFormPowers/HeroFormPowers';
+import { EditHeroFormChange, EditHeroFormData } from '../model/types/edit';
+import { useUpdateHeroMutation } from '../api/hero';
 
 import s from './HeroEditForm.module.scss';
+import { HeroEditPhotos } from './FormEditPhotos/FormEditPhotos';
 
-import { HeroEditPhotos } from '@/entities/Hero/ui/HeroEditForm/HeroEditPhotos/HeroEditPhotos';
 import { Button } from '@/shared/ui/Button';
-import { useUpdateHeroMutation } from '@/entities/Hero/api/heroes';
+import { Hero } from '@/entities/Hero';
+import { FormMainInfo, FormPowers, FormStory } from '@/features/HeroCreate';
 
 interface HeroEditFormProps {
 	hero: Hero;
 }
-
-export type EditHeroFormChange = <K extends keyof EditHeroFormData>(
-	field: K,
-	value: EditHeroFormData[K]
-) => void;
 
 export function HeroEditForm(props: HeroEditFormProps) {
 	const { hero } = props;
@@ -72,18 +66,18 @@ export function HeroEditForm(props: HeroEditFormProps) {
 			className={s.form}
 			onSubmit={handleSubmit}
 		>
-			<HeroFormMain
+			<FormMainInfo
 				nickname={formData.nickname}
 				realName={formData.realName}
 				catchPhrase={formData.catchPhrase}
 				onChange={handleChange}
 				isEdit
 			/>
-			<HeroFormStory
+			<FormStory
 				story={formData.originDescription}
 				onChange={handleChange}
 			/>
-			<HeroFormPowers
+			<FormPowers
 				powers={formData.superpowers}
 				onChange={handleChange}
 			/>

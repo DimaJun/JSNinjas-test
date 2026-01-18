@@ -1,25 +1,20 @@
 import { ChangeEvent } from 'react';
 
-import { HeroFormSectionTop } from '../HeroFormSectionTop/HeroFormSectionTop';
+import { FormSectionTop } from '../FormSectionTop/FormSectionTop';
+import { ImagePreview } from '../ImagePreview/ImagePreview';
+import { ImageItem } from '../../model/types/create';
 
-import s from './HeroFormPhotos.module.scss';
-import { ImagePreview } from './ImagePreview/ImagePreview';
-import { UploadPlaceholder } from './UploadPlaceholder/UploadPlaceholder';
+import s from './FormPhotos.module.scss';
 
 import { Card } from '@/shared/ui/Card';
+import { UploadPlaceholder } from '@/shared/ui/UploadPlaceholder';
 
-export interface ImageItem {
-	id: string;
-	file: File;
-	preview: string;
-}
-
-interface HeroFormPhotosProps {
+interface FormPhotosProps {
 	images: File[];
 	onChange: (files: File[]) => void;
 }
 
-export function HeroFormPhotos(props: HeroFormPhotosProps) {
+export function FormPhotos(props: FormPhotosProps) {
 	const { images, onChange } = props;
 
 	const imageItems: ImageItem[] = images.map((file) => ({
@@ -46,7 +41,7 @@ export function HeroFormPhotos(props: HeroFormPhotosProps) {
 
 	return (
 		<Card padding='24'>
-			<HeroFormSectionTop
+			<FormSectionTop
 				num={4}
 				text='Image gallery'
 			/>
@@ -60,7 +55,14 @@ export function HeroFormPhotos(props: HeroFormPhotosProps) {
 						onRemove={() => removeImage(index)}
 					/>
 				))}
-				{images.length !== 6 && <UploadPlaceholder onChange={onSelectItems} />}
+				{images.length !== 6 && (
+					<UploadPlaceholder
+						onChange={onSelectItems}
+						label='Upload photos:'
+						accept='image/webp, image/jpg, image/png, image/jpeg'
+						multiple
+					/>
+				)}
 			</div>
 			<p className={s.requirements}>Formats: JPG, JPEG, PNG, WEBP. Maximum 6 images.</p>
 		</Card>

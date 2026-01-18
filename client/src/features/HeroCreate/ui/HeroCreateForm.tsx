@@ -2,23 +2,18 @@ import { Save } from 'lucide-react';
 import { FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
-import { CreateHeroFormData } from '../../model/types/hero';
+import { CreateHeroFormChange, CreateHeroFormData } from '../model/types/create';
+import { useCreateHeroMutation } from '../api/hero';
 
-import { HeroFormMain } from './HeroFormMain/HeroFormMain';
-import { HeroFormStory } from './HeroFormStory/HeroFormStory';
-import { HeroFormPowers } from './HeroFormPowers/HeroFormPowers';
-import { HeroFormPhotos } from './HeroFormPhotos/HeroFormPhotos';
-import s from './HeroForm.module.scss';
+import s from './HeroCreateForm.module.scss';
+import { FormMainInfo } from './FormMainInfo/FormMainInfo';
+import { FormStory } from './FormStory/FormStory';
+import { FormPowers } from './FormPowers/FormPowers';
+import { FormPhotos } from './FormPhotos/FormPhotos';
 
 import { Button } from '@/shared/ui/Button';
-import { useCreateHeroMutation } from '@/entities/Hero';
 
-export type HeroFormChange = <K extends keyof CreateHeroFormData>(
-	field: K,
-	value: CreateHeroFormData[K]
-) => void;
-
-export function HeroForm() {
+export function HeroCreateForm() {
 	const navigate = useNavigate();
 	const [formData, setFormData] = useState<CreateHeroFormData>({
 		nickname: '',
@@ -29,7 +24,7 @@ export function HeroForm() {
 		images: [],
 	});
 
-	const handleChange: HeroFormChange = (field, value) => {
+	const handleChange: CreateHeroFormChange = (field, value) => {
 		setFormData((prev) => ({ ...prev, [field]: value }));
 	};
 
@@ -63,21 +58,21 @@ export function HeroForm() {
 			className={s.form}
 			onSubmit={handleSubmit}
 		>
-			<HeroFormMain
+			<FormMainInfo
 				nickname={formData.nickname}
 				realName={formData.realName}
 				catchPhrase={formData.catchPhrase}
 				onChange={handleChange}
 			/>
-			<HeroFormStory
+			<FormStory
 				story={formData.originDescription}
 				onChange={handleChange}
 			/>
-			<HeroFormPowers
+			<FormPowers
 				powers={formData.superpowers}
 				onChange={handleChange}
 			/>
-			<HeroFormPhotos
+			<FormPhotos
 				images={formData.images}
 				onChange={(files: File[]) => handleChange('images', files)}
 			/>

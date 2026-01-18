@@ -6,7 +6,8 @@ import s from './EditHeroPage.module.scss';
 import { Page } from '@/shared/ui/Page';
 import { classNames } from '@/shared/helpers';
 import { getMainRoute } from '@/shared/config/router';
-import { HeroEditForm, useGetHeroByIdQuery } from '@/entities/Hero';
+import { useGetHeroByIdQuery } from '@/entities/Hero';
+import { HeroEditForm } from '@/features/HeroEdit';
 
 export function EditHeroPage() {
 	const { id } = useParams<{ id: string }>();

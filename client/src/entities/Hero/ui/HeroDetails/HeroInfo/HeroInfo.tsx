@@ -1,10 +1,9 @@
 import { Info } from 'lucide-react';
 
-import { HeroFormSectionTop } from '../../HeroForm/HeroFormSectionTop/HeroFormSectionTop';
-
 import s from './HeroInfo.module.scss';
 
 import { Card } from '@/shared/ui/Card';
+import { FormSectionTop } from '@/features/HeroCreate';
 
 interface HeroInfoProps {
 	nickname: string;
@@ -19,7 +18,7 @@ export function HeroInfo({ nickname, photosCount, powersCount, realName }: HeroI
 			className={s.info}
 			padding='16'
 		>
-			<HeroFormSectionTop
+			<FormSectionTop
 				text='Information'
 				Icon={Info}
 			/>

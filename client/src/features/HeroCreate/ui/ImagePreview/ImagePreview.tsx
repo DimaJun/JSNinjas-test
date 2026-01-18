@@ -2,7 +2,7 @@ import { X } from 'lucide-react';
 
 import s from './ImagePreview.module.scss';
 
-import { serverStaticImagesUrl } from '@/entities/Hero/consts/hero';
+import { serverStaticImagesUrl } from '@/shared/consts/consts';
 
 interface ImagePreviewProps {
 	preview: string;

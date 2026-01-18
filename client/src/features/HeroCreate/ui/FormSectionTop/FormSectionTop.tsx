@@ -1,6 +1,6 @@
 import { LucideIcon } from 'lucide-react';
 
-import s from './HeroFormSectionTop.module.scss';
+import s from './FormSectionTop.module.scss';
 
 interface SectionTopProps {
 	num?: number;
@@ -8,7 +8,7 @@ interface SectionTopProps {
 	text: string;
 }
 
-export function HeroFormSectionTop({ num, text, Icon }: SectionTopProps) {
+export function FormSectionTop({ num, text, Icon }: SectionTopProps) {
 	return (
 		<h3 className={s.top}>
 			{num && <span>0{num}</span>}

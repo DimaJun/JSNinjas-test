@@ -1,10 +1,9 @@
 import { BookOpen } from 'lucide-react';
 
-import { HeroFormSectionTop } from '../../HeroForm/HeroFormSectionTop/HeroFormSectionTop';
-
 import s from './HeroStory.module.scss';
 
 import { Card } from '@/shared/ui/Card';
+import { FormSectionTop } from '@/features/HeroCreate';
 
 interface HeroStoryProps {
 	story: string;
@@ -16,7 +15,7 @@ export function HeroStory({ story }: HeroStoryProps) {
 			className={s.story}
 			padding='16'
 		>
-			<HeroFormSectionTop
+			<FormSectionTop
 				text='Origin description'
 				Icon={BookOpen}
 			/>

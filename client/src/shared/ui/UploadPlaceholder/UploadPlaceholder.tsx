@@ -5,18 +5,23 @@ import s from './UploadPlaceholder.module.scss';
 
 interface UploadPlaceholderProps {
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	multiple?: boolean;
+	accept?: string;
+	label?: string;
 }
 
-export function UploadPlaceholder({ onChange }: UploadPlaceholderProps) {
+export function UploadPlaceholder(props: UploadPlaceholderProps) {
+	const { onChange, accept, label, multiple } = props;
+
 	return (
 		<label className={s.uploadPlaceholder}>
 			<Upload />
-			<p>Upload photo</p>
+			<p>{label}</p>
 			<input
 				className={s.hidden}
 				type='file'
-				accept='image/webp, image/jpg, image/png, image/jpeg'
-				multiple
+				accept={accept}
+				multiple={multiple}
 				onChange={onChange}
 			/>
 		</label>

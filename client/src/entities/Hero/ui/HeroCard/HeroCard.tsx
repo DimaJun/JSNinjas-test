@@ -1,11 +1,10 @@
 import { Link } from 'react-router';
 
-import { serverStaticImagesUrl } from '../../consts/hero';
-
 import s from './HeroCard.module.scss';
 
 import { Card } from '@/shared/ui/Card';
 import { Avatar } from '@/shared/ui/Avatar';
+import { serverStaticImagesUrl } from '@/shared/consts/consts';
 
 interface HeroCardProps {
 	id: string;

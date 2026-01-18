@@ -1,22 +1,22 @@
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
 
-import { HeroFormSectionTop } from '../HeroFormSectionTop/HeroFormSectionTop';
-import { HeroTags } from '../HeroTags/HeroTags';
-import { HeroFormChange } from '../HeroForm';
+import { CreateHeroFormChange } from '../../model/types/create';
+import { FormSectionTop } from '../FormSectionTop/FormSectionTop';
 
-import s from './HeroFormPowers.module.scss';
+import s from './FormPowers.module.scss';
 
 import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
+import { HeroTags } from '@/entities/Hero';
 
-interface HeroFormPowersProps {
+interface FormPowersProps {
 	powers: string[];
-	onChange: HeroFormChange;
+	onChange: CreateHeroFormChange;
 }
 
-export function HeroFormPowers(props: HeroFormPowersProps) {
+export function FormPowers(props: FormPowersProps) {
 	const { powers, onChange } = props;
 	const [tag, setTag] = useState('');
 
@@ -28,7 +28,7 @@ export function HeroFormPowers(props: HeroFormPowersProps) {
 
 	return (
 		<Card padding='24'>
-			<HeroFormSectionTop
+			<FormSectionTop
 				num={3}
 				text='Superpowers'
 			/>

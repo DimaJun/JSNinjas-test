@@ -1,0 +1,1 @@
+export { UploadPlaceholder } from './UploadPlaceholder';

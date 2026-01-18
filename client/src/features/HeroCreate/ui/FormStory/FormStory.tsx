@@ -1,22 +1,22 @@
-import { HeroFormSectionTop } from '../HeroFormSectionTop/HeroFormSectionTop';
-import { HeroFormChange } from '../HeroForm';
+import { CreateHeroFormChange } from '../../model/types/create';
+import { FormSectionTop } from '../FormSectionTop/FormSectionTop';
 
-import s from './HeroFormStory.module.scss';
+import s from './FormStory.module.scss';
 
 import { Card } from '@/shared/ui/Card';
 import { Textarea } from '@/shared/ui/Textarea';
 
-interface HeroFormStoryProps {
+interface FormStoryProps {
 	story: string;
-	onChange: HeroFormChange;
+	onChange: CreateHeroFormChange;
 }
 
-export function HeroFormStory(props: HeroFormStoryProps) {
+export function FormStory(props: FormStoryProps) {
 	const { story, onChange } = props;
 
 	return (
 		<Card padding='24'>
-			<HeroFormSectionTop
+			<FormSectionTop
 				num={2}
 				text='Origin description'
 			/>

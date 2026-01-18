@@ -1,11 +1,11 @@
 import { Zap } from 'lucide-react';
 
-import { HeroFormSectionTop } from '../../HeroForm/HeroFormSectionTop/HeroFormSectionTop';
-import { HeroTags } from '../../HeroForm/HeroTags/HeroTags';
+import { HeroTags } from '../../HeroTags/HeroTags';
 
 import s from './HeroPowers.module.scss';
 
 import { Card } from '@/shared/ui/Card';
+import { FormSectionTop } from '@/features/HeroCreate';
 
 interface HeroPowersProps {
 	powers: string[];
@@ -17,7 +17,7 @@ export function HeroPowers({ powers }: HeroPowersProps) {
 			className={s.powers}
 			padding='16'
 		>
-			<HeroFormSectionTop
+			<FormSectionTop
 				text='Superpowers'
 				Icon={Zap}
 			/>

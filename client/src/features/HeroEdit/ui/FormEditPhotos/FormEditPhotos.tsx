@@ -1,14 +1,13 @@
 import { ChangeEvent } from 'react';
 
-import { HeroFormSectionTop } from '../../HeroForm/HeroFormSectionTop/HeroFormSectionTop';
-import { ImagePreview } from '../../HeroForm/HeroFormPhotos/ImagePreview/ImagePreview';
+import { EditHeroFormChange } from '../../model/types/edit';
 
-import s from './HeroEditPhotos.module.scss';
+import s from './FormEditPhotos.module.scss';
 
 import { Card } from '@/shared/ui/Card';
-import { ImageItem } from '@/entities/Hero/ui/HeroForm/HeroFormPhotos/HeroFormPhotos';
-import { UploadPlaceholder } from '@/entities/Hero/ui/HeroForm/HeroFormPhotos/UploadPlaceholder/UploadPlaceholder';
-import { EditHeroFormChange } from '@/entities/Hero/ui/HeroEditForm/HeroEditForm';
+import { FormSectionTop, ImagePreview } from '@/features/HeroCreate';
+import type { ImageItem } from '@/features/HeroCreate';
+import { UploadPlaceholder } from '@/shared/ui/UploadPlaceholder';
 
 interface HeroEditPhotosProps {
 	currentPhotos: string[];
@@ -53,7 +52,7 @@ export function HeroEditPhotos(props: HeroEditPhotosProps) {
 
 	return (
 		<Card padding='24'>
-			<HeroFormSectionTop
+			<FormSectionTop
 				num={4}
 				text='Image gallery'
 			/>
@@ -80,7 +79,14 @@ export function HeroEditPhotos(props: HeroEditPhotosProps) {
 							onRemove={() => onImageRemove(index)}
 						/>
 					))}
-					{totalImages < 6 && <UploadPlaceholder onChange={onSelectItems} />}
+					{totalImages < 6 && (
+						<UploadPlaceholder
+							onChange={onSelectItems}
+							label='Upload photos'
+							accept='image/webp, image/jpg, image/png, image/jpeg'
+							multiple
+						/>
+					)}
 				</div>
 			</div>
 		</Card>

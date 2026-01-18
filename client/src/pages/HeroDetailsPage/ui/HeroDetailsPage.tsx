@@ -5,9 +5,10 @@ import s from './HeroDetailsPage.module.scss';
 
 import { getMainRoute } from '@/shared/config/router';
 import { Button } from '@/shared/ui/Button';
-import { HeroDetails, useGetHeroByIdQuery, useRemoveHeroMutation } from '@/entities/Hero';
+import { HeroDetails, useGetHeroByIdQuery } from '@/entities/Hero';
 import { Page } from '@/shared/ui/Page';
 import { classNames } from '@/shared/helpers';
+import { useRemoveHeroMutation } from '@/features/HeroEdit';
 
 export function HeroDetailsPage() {
 	const { id } = useParams<{ id: string }>();

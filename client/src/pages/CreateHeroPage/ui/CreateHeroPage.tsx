@@ -4,9 +4,9 @@ import { ArrowLeft } from 'lucide-react';
 import s from './CreateHeroPage.module.scss';
 
 import { getMainRoute } from '@/shared/config/router';
-import { HeroForm } from '@/entities/Hero';
 import { Page } from '@/shared/ui/Page';
 import { classNames } from '@/shared/helpers';
+import { HeroCreateForm } from '@/features/HeroCreate';
 
 export function CreateHeroPage() {
 	return (
@@ -19,7 +19,7 @@ export function CreateHeroPage() {
 				Back to list
 			</Link>
 			<h2 className={s.pageName}>Create a Superhero</h2>
-			<HeroForm />
+			<HeroCreateForm />
 		</Page>
 	);
 }
