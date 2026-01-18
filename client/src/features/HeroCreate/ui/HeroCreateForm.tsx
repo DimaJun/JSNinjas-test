@@ -1,9 +1,7 @@
 import { Save } from 'lucide-react';
-import { FormEvent, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 
-import { CreateHeroFormChange, CreateHeroFormData } from '../model/types/create';
-import { useCreateHeroMutation } from '../api/hero';
+import { useHeroCreate } from '../hooks/useHeroCreate';
 
 import s from './HeroCreateForm.module.scss';
 import { FormMainInfo } from './FormMainInfo/FormMainInfo';
@@ -14,40 +12,7 @@ import { FormPhotos } from './FormPhotos/FormPhotos';
 import { Button } from '@/shared/ui/Button';
 
 export function HeroCreateForm() {
-	const navigate = useNavigate();
-	const [formData, setFormData] = useState<CreateHeroFormData>({
-		nickname: '',
-		realName: '',
-		catchPhrase: '',
-		originDescription: '',
-		superpowers: [],
-		images: [],
-	});
-
-	const handleChange: CreateHeroFormChange = (field, value) => {
-		setFormData((prev) => ({ ...prev, [field]: value }));
-	};
-
-	const [createHero] = useCreateHeroMutation();
-
-	const handleSubmit = async (e: FormEvent) => {
-		e.preventDefault();
-
-		const fd = new FormData();
-		fd.append('nickname', formData.nickname);
-		fd.append('realName', formData.realName);
-		fd.append('catchPhrase', formData.catchPhrase);
-		fd.append('originDescription', formData.originDescription);
-		formData.superpowers.forEach((sp) => fd.append('superpowers', sp));
-		formData.images.forEach((img) => fd.append('images', img));
-
-		try {
-			const hero = await createHero(fd).unwrap();
-			navigate(`/hero/${hero.id}`);
-		} catch (e) {
-			console.log(e);
-		}
-	};
+	const { formData, handleChange, handleSubmit, navigate } = useHeroCreate();
 
 	useEffect(() => {
 		console.log(formData);

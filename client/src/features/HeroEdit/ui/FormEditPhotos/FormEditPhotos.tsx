@@ -8,6 +8,7 @@ import { Card } from '@/shared/ui/Card';
 import { FormSectionTop, ImagePreview } from '@/features/HeroCreate';
 import type { ImageItem } from '@/features/HeroCreate';
 import { UploadPlaceholder } from '@/shared/ui/UploadPlaceholder';
+import { handleFileSelect } from '@/shared/utilities';
 
 interface HeroEditPhotosProps {
 	currentPhotos: string[];
@@ -29,14 +30,7 @@ export function HeroEditPhotos(props: HeroEditPhotosProps) {
 	const totalImages = currentPhotos.length + images.length;
 
 	const onSelectItems = (e: ChangeEvent<HTMLInputElement>) => {
-		const files = e.target.files;
-		if (!files) return;
-
-		const newFiles = Array.from(files);
-
-		onChange([...images, ...newFiles]);
-
-		e.target.value = '';
+		handleFileSelect(e, images, onChange);
 	};
 
 	const onImageRemove = (index: number) => {

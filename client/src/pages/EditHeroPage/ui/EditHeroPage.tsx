@@ -5,7 +5,6 @@ import s from './EditHeroPage.module.scss';
 
 import { Page } from '@/shared/ui/Page';
 import { classNames } from '@/shared/helpers';
-import { getMainRoute } from '@/shared/config/router';
 import { useGetHeroByIdQuery } from '@/entities/Hero';
 import { HeroEditForm } from '@/features/HeroEdit';
 
@@ -22,7 +21,7 @@ export function EditHeroPage() {
 		<Page className={classNames(s.EditHeroPage, {}, [])}>
 			<Link
 				className={s.backToList}
-				to={getMainRoute()}
+				to={`/hero/${id}`}
 			>
 				<ArrowLeft className={s.icon} />
 				Back to hero page

@@ -8,6 +8,7 @@ import s from './FormPhotos.module.scss';
 
 import { Card } from '@/shared/ui/Card';
 import { UploadPlaceholder } from '@/shared/ui/UploadPlaceholder';
+import { handleFileSelect } from '@/shared/utilities';
 
 interface FormPhotosProps {
 	images: File[];
@@ -24,14 +25,7 @@ export function FormPhotos(props: FormPhotosProps) {
 	}));
 
 	const onSelectItems = (e: ChangeEvent<HTMLInputElement>) => {
-		const files = e.target.files;
-		if (!files) return;
-
-		const newFiles = Array.from(files);
-
-		onChange([...images, ...newFiles]);
-
-		e.target.value = '';
+		handleFileSelect(e, images, onChange);
 	};
 
 	const removeImage = (index: number) => {
