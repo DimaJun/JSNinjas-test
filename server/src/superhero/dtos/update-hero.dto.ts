@@ -9,13 +9,7 @@ import {
 } from 'class-validator';
 import { Transform } from 'class-transformer';
 
-export class CreateSuperheroDto {
-	@IsString()
-	@IsNotEmpty({ message: 'Nickname is required' })
-	@MinLength(2, { message: 'Nicknames must be between 2 and 40 characters long' })
-	@MaxLength(40, { message: 'Nicknames must be between 2 and 40 characters long' })
-	nickname: string;
-
+export class UpdateHeroDto {
 	@IsString()
 	@IsNotEmpty({ message: 'Real name is required' })
 	@MinLength(2, { message: 'Real name must be between 2 and 40 characters long.' })
@@ -31,8 +25,8 @@ export class CreateSuperheroDto {
 
 	@IsString()
 	@IsNotEmpty({ message: 'Catch phrase is required' })
-	@MaxLength(255, {
-		message: 'Catch phrase must be at most 255 characters long',
+	@MaxLength(200, {
+		message: 'Catch phrase must be at most 200 characters long',
 	})
 	catchPhrase: string;
 
@@ -43,5 +37,9 @@ export class CreateSuperheroDto {
 	superpowers: string[];
 
 	@IsOptional()
-	images?: string[];
+	@Transform(({ value }) => (Array.isArray(value) ? value : [value]))
+	@IsArray({ message: 'Files to remove must be an array' })
+	@ArrayNotEmpty({ message: 'Files to remove array cannot be empty' })
+	@IsString({ each: true, message: 'Each file to remove must be a string' })
+	filesToRemove?: string[];
 }

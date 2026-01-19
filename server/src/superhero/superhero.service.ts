@@ -3,6 +3,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { CreateSuperheroDto } from './dtos/create-superhero.dto';
 import { PrismaClientKnownRequestError } from '../../generated/prisma/internal/prismaNamespace';
 import { FileUploadService } from '../file-upload/file-upload.service';
+import { UpdateHeroDto } from './dtos/update-hero.dto';
 
 @Injectable()
 export class SuperheroService {
@@ -58,8 +59,8 @@ export class SuperheroService {
 
 	async updateSuperhero(
 		id: string,
-		dto: Partial<Omit<CreateSuperheroDto, 'images' | 'nickname'>>,
-		filesToRemove: string[],
+		dto: Omit<UpdateHeroDto, 'filesToRemove'>,
+		filesToRemove?: string[],
 		newFiles?: Express.Multer.File[],
 	) {
 		const superhero = await this.prisma.superhero.findUnique({ where: { id } });

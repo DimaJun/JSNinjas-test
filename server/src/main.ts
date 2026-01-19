@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import path from 'path';
 import 'dotenv/config';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
 	const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -12,6 +13,13 @@ async function bootstrap() {
 	app.useStaticAssets(path.join(__dirname, '..', '..', 'uploads'), {
 		prefix: '/images/',
 	});
+	app.useGlobalPipes(
+		new ValidationPipe({
+			whitelist: true,
+			forbidNonWhitelisted: false,
+			transform: true,
+		}),
+	);
 	await app.listen(process.env.PORT ?? 8000);
 }
 bootstrap();

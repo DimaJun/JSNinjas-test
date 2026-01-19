@@ -17,6 +17,7 @@ import { FileUploadService } from '../file-upload/file-upload.service';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { multerConfig } from '../configs/multer/multer.config';
 import { CreateSuperheroDto } from './dtos/create-superhero.dto';
+import { UpdateHeroDto } from './dtos/update-hero.dto';
 
 @Controller('superhero')
 export class SuperheroController {
@@ -42,16 +43,11 @@ export class SuperheroController {
 	@Post('/create')
 	@UseInterceptors(FilesInterceptor('images', 6, multerConfig))
 	@HttpCode(HttpStatus.OK)
-	async createSuperhero(
-		@Body() body: Omit<CreateSuperheroDto, 'images'>,
-		@UploadedFiles() images: Express.Multer.File[],
-	) {
+	async createSuperhero(@Body() body: CreateSuperheroDto, @UploadedFiles() images: Express.Multer.File[]) {
 		const imagesPaths = this.filesService.getSavedFilesPaths(images);
-		const superpwrs = Array.isArray(body.superpowers) ? body.superpowers : [body.superpowers];
 
 		const dto: CreateSuperheroDto = {
 			...body,
-			superpowers: superpwrs,
 			images: imagesPaths,
 		};
 
@@ -63,7 +59,7 @@ export class SuperheroController {
 	@HttpCode(HttpStatus.OK)
 	async updateSuperhero(
 		@Param('id') id: string,
-		@Body() body: Partial<Omit<CreateSuperheroDto, 'images' | 'nickname'>> & { filesToRemove: string[] },
+		@Body() body: UpdateHeroDto,
 		@UploadedFiles() files?: Express.Multer.File[],
 	) {
 		const { filesToRemove, ...dto } = body;
