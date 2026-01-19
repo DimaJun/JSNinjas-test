@@ -1,4 +1,4 @@
-import { ArrowLeft, SquarePen } from 'lucide-react';
+import { ArrowLeft, SquarePen, Trash } from 'lucide-react';
 import { Link, useNavigate, useParams } from 'react-router';
 
 import s from './HeroDetailsPage.module.scss';
@@ -9,18 +9,26 @@ import { useGetHeroByIdQuery } from '@/entities/Hero';
 import { Page } from '@/shared/ui/Page';
 import { classNames } from '@/shared/helpers';
 import { useRemoveHeroMutation } from '@/features/HeroEdit';
-import { HeroDetails } from '@/features/HeroDetails';
+import { HeroDetails, HeroDetailsSkeleton } from '@/features/HeroDetails';
 
 function HeroDetailsPage() {
 	const { id } = useParams<{ id: string }>();
 	const navigate = useNavigate();
 
-	const { data: hero, isError } = useGetHeroByIdQuery({ id }, { skip: !id });
+	const { data: hero, isError, isLoading } = useGetHeroByIdQuery({ id }, { skip: !id });
 
 	const [removeHero] = useRemoveHeroMutation();
 
 	if (!id) {
 		return <div className={s.not_found}>Superhero not found!</div>;
+	}
+
+	if (isLoading) {
+		return (
+			<Page className={classNames(s.HeroDetails, {}, [])}>
+				<HeroDetailsSkeleton />
+			</Page>
+		);
 	}
 
 	if (isError || !hero) {
@@ -46,7 +54,7 @@ function HeroDetailsPage() {
 				<div className={s.btns}>
 					<Button
 						className={s.remove}
-						Icon={SquarePen}
+						Icon={Trash}
 						onClick={handleRemoveHero}
 					>
 						Remove

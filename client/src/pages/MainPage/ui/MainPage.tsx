@@ -17,9 +17,17 @@ function MainPage() {
 		limit: LIMIT,
 	});
 
+	if (isLoading) {
+		return (
+			<Page className={classNames(s.MainPage, {}, [])}>
+				<HeroesListSkeleton />
+			</Page>
+		);
+	}
+
 	return (
 		<Page className={classNames(s.MainPage, {}, [])}>
-			{isLoading ? <HeroesListSkeleton /> : <HeroesList heroes={data?.heroes} />}
+			<HeroesList heroes={data?.heroes} />
 			{data && (
 				<Pagination
 					page={page}
