@@ -6,7 +6,7 @@ import { Card } from '@/shared/ui/Card';
 import { FormSectionTop } from '@/features/HeroCreate';
 
 interface HeroStoryProps {
-	story: string;
+	story?: string;
 }
 
 export function HeroStory({ story }: HeroStoryProps) {
@@ -19,7 +19,11 @@ export function HeroStory({ story }: HeroStoryProps) {
 				text='Origin description'
 				Icon={BookOpen}
 			/>
-			<p className={s.description}>{story}</p>
+			{story ? (
+				<p className={s.description}>{story}</p>
+			) : (
+				<p className={s.description}>No origin description</p>
+			)}
 		</Card>
 	);
 }

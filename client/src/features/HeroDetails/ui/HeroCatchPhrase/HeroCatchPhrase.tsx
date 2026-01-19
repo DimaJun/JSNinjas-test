@@ -3,7 +3,7 @@ import s from './HeroCatchPhrase.module.scss';
 import { Card } from '@/shared/ui/Card';
 
 interface HeroCatchPhraseProps {
-	phrase: string;
+	phrase?: string;
 }
 
 export function HeroCatchPhrase({ phrase }: HeroCatchPhraseProps) {
@@ -12,7 +12,7 @@ export function HeroCatchPhrase({ phrase }: HeroCatchPhraseProps) {
 			className={s.wrapper}
 			padding='16'
 		>
-			<p className={s.phrase}>{phrase}</p>
+			{phrase ? <p className={s.phrase}>{phrase}</p> : <p>No catch phrase</p>}
 		</Card>
 	);
 }

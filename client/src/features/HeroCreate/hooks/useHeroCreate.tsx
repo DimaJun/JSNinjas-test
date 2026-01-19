@@ -4,6 +4,8 @@ import { FormEvent, useState } from 'react';
 import { CreateHeroFormChange, CreateHeroFormData } from '../model/types/create';
 import { useCreateHeroMutation } from '../api/hero';
 
+import { showToast } from '@/shared/lib/toast';
+
 export function useHeroCreate() {
 	const navigate = useNavigate();
 	const [formData, setFormData] = useState<CreateHeroFormData>({
@@ -24,6 +26,8 @@ export function useHeroCreate() {
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
 
+		const toastId = showToast.loading('Saving hero...');
+
 		const fd = new FormData();
 		fd.append('nickname', formData.nickname);
 		fd.append('realName', formData.realName);
@@ -34,9 +38,11 @@ export function useHeroCreate() {
 
 		try {
 			const hero = await createHero(fd).unwrap();
+			showToast.updateSuccess(toastId, 'Success!');
 			navigate(`/hero/${hero.id}`);
 		} catch (e) {
 			console.log(e);
+			showToast.updateError(toastId, 'Error!');
 		}
 	};
 

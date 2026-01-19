@@ -10,6 +10,7 @@ import { Page } from '@/shared/ui/Page';
 import { classNames } from '@/shared/helpers';
 import { useRemoveHeroMutation } from '@/features/HeroEdit';
 import { HeroDetails, HeroDetailsSkeleton } from '@/features/HeroDetails';
+import { showToast } from '@/shared/lib/toast';
 
 function HeroDetailsPage() {
 	const { id } = useParams<{ id: string }>();
@@ -36,7 +37,13 @@ function HeroDetailsPage() {
 	}
 
 	const handleRemoveHero = async () => {
-		await removeHero({ id });
+		const toastId = showToast.loading('Removing...');
+		try {
+			await removeHero({ id });
+			showToast.updateSuccess(toastId, 'Success!');
+		} catch (e) {
+			showToast.updateError(toastId, 'Error!');
+		}
 		navigate('/');
 	};
 

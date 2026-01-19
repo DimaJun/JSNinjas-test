@@ -7,7 +7,7 @@ import { FormSectionTop } from '@/features/HeroCreate';
 
 interface HeroInfoProps {
 	nickname: string;
-	realName: string;
+	realName?: string;
 	powersCount: number;
 	photosCount: number;
 }
@@ -25,9 +25,11 @@ export function HeroInfo({ nickname, photosCount, powersCount, realName }: HeroI
 			<p className={s.infoRow}>
 				<span>Nickname:</span> <span>{nickname}</span>
 			</p>
-			<p className={s.infoRow}>
-				<span>Real name:</span> <span>{realName}</span>
-			</p>
+			{realName && (
+				<p className={s.infoRow}>
+					<span>Real name:</span> <span>{realName}</span>
+				</p>
+			)}
 			<p className={s.infoRow}>
 				<span>Superpowers:</span> <span>{powersCount}</span>
 			</p>

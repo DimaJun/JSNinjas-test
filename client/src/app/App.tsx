@@ -19,7 +19,7 @@ export function App() {
 					Create hero
 				</Link>
 			</div>
-			<Toaster position='bottom-center' />
+			<Toaster position='top-right' />
 			<AppRouter />
 		</div>
 	);

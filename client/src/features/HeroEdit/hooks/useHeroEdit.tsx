@@ -5,6 +5,7 @@ import { EditHeroFormChange, EditHeroFormData } from '../model/types/edit';
 import { useUpdateHeroMutation } from '../api/hero';
 
 import { Hero } from '@/entities/Hero';
+import { showToast } from '@/shared/lib/toast';
 
 export function useHeroEdit(hero: Hero) {
 	const navigate = useNavigate();
@@ -28,6 +29,8 @@ export function useHeroEdit(hero: Hero) {
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
 
+		const toastId = showToast.loading('Updating...');
+
 		const fd = new FormData();
 		fd.append('realName', formData.realName);
 		fd.append('originDescription', formData.originDescription);
@@ -38,17 +41,18 @@ export function useHeroEdit(hero: Hero) {
 
 		try {
 			const updated = await updateHero({ id: hero.id, formData: fd }).unwrap();
-
+			showToast.updateSuccess(toastId, 'Success!');
 			navigate(`/hero/${updated.id}`);
 		} catch (e) {
+			showToast.updateError(toastId, 'Error!');
 			console.log(e);
 		}
 	};
-	
+
 	return {
 		navigate,
 		formData,
 		handleSubmit,
 		handleChange,
-	}
+	};
 }
