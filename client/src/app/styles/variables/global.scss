@@ -23,7 +23,12 @@
 	--color-error: #f55f5f;
 	--color-error-hover: #da5555;
 
+	// Skeleton
 	--skeleton-bg: rgb(71, 85, 105);
+
+	// Toast
+	--toast-bg: rgba(30, 41, 59, 0.95);
+	--toast-border: 1px solid rgba(71, 85, 105, 0.5);
 
 	// Input
 	--input-outline: 1px solid rgba(130, 130, 130, 0.5);

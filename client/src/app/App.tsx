@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { PencilLine } from 'lucide-react';
+import { Toaster } from 'react-hot-toast';
 
 import { AppRouter } from './providers/router/ui/AppRouter';
 
@@ -18,6 +19,7 @@ export function App() {
 					Create hero
 				</Link>
 			</div>
+			<Toaster position='bottom-center' />
 			<AppRouter />
 		</div>
 	);

@@ -1,0 +1,38 @@
+.Toast {
+	min-width: 200px;
+	max-width: 400px;
+
+	background-color: var(--toast-bg);
+	border: var(--toast-border);
+	border-radius: 12px;
+
+	padding: 10px;
+
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.content {
+	flex: 1;
+	word-break: break-word;
+
+	.title {
+		font-size: var(--font-size-l);
+		font-weight: 500;
+	}
+
+	.message {
+		color: var(--color-neutral);
+	}
+}
+
+.icon.success {
+	stroke: var(--color-success);
+}
+.icon.error {
+	stroke: var(--color-error);
+}
+.icon.loading {
+	stroke: var(--color-sky);
+}
