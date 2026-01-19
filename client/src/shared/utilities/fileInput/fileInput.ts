@@ -6,7 +6,7 @@ export function handleFileSelect(
 	onChange: (files: File[]) => void
 ) {
 	const files = e.target.files;
-	if (!files) return;
+	if (!files || files.length > 6) return;
 
 	const newFiles = Array.from(files);
 

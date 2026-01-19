@@ -7,10 +7,11 @@ import { classNames } from '@/shared/helpers';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
 	label?: string;
+	error?: string;
 }
 
 export function Input(props: InputProps) {
-	const { className, label, placeholder, type = 'text', value, onChange, ...rest } = props;
+	const { className, label, placeholder, type = 'text', value, onChange, error, ...rest } = props;
 
 	if (label) {
 		return (
@@ -24,18 +25,22 @@ export function Input(props: InputProps) {
 					type={type}
 					{...rest}
 				/>
+				{error && <p className={s.error}>{error}</p>}
 			</div>
 		);
 	}
 
 	return (
-		<input
-			className={classNames(s.Input, {}, [className])}
-			placeholder={placeholder}
-			value={value}
-			onChange={onChange}
-			type={type}
-			{...rest}
-		/>
+		<div className={s.wrapper}>
+			<input
+				className={classNames(s.Input, {}, [className])}
+				placeholder={placeholder}
+				value={value}
+				onChange={onChange}
+				type={type}
+				{...rest}
+			/>
+			{error && <p className={s.error}>{error}</p>}
+		</div>
 	);
 }

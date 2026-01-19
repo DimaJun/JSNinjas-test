@@ -1,5 +1,4 @@
 import { Save } from 'lucide-react';
-import { useEffect } from 'react';
 
 import { useHeroCreate } from '../hooks/useHeroCreate';
 
@@ -12,34 +11,45 @@ import { FormPhotos } from './FormPhotos/FormPhotos';
 import { Button } from '@/shared/ui/Button';
 
 export function HeroCreateForm() {
-	const { formData, handleChange, handleSubmit, navigate } = useHeroCreate();
+	const {
+		formData,
+		handleChange,
+		onSubmit,
+		handleSubmit,
+		register,
+		watch,
+		navigate,
+		setValue,
+		fileError,
+		errors,
+	} = useHeroCreate();
 
-	useEffect(() => {
-		console.log(formData);
-	}, [formData]);
+	const powers = watch('superpowers');
 
 	return (
 		<form
 			className={s.form}
-			onSubmit={handleSubmit}
+			onSubmit={handleSubmit(onSubmit)}
 		>
 			<FormMainInfo
-				nickname={formData.nickname}
-				realName={formData.realName}
-				catchPhrase={formData.catchPhrase}
-				onChange={handleChange}
+				register={register}
+				nickError={errors?.nickname?.message}
+				realNameError={errors?.realName?.message}
+				phraseError={errors?.catchPhrase?.message}
 			/>
 			<FormStory
-				story={formData.originDescription}
-				onChange={handleChange}
+				register={register}
+				error={errors?.originDescription?.message}
 			/>
 			<FormPowers
-				powers={formData.superpowers}
-				onChange={handleChange}
+				powers={powers}
+				setValue={setValue}
+				error={errors?.superpowers?.message}
 			/>
 			<FormPhotos
 				images={formData.images}
 				onChange={(files: File[]) => handleChange('images', files)}
+				error={fileError}
 			/>
 			<div className={s.btns}>
 				<Button

@@ -13,10 +13,11 @@ import { handleFileSelect } from '@/shared/utilities';
 interface FormPhotosProps {
 	images: File[];
 	onChange: (files: File[]) => void;
+	error?: string;
 }
 
 export function FormPhotos(props: FormPhotosProps) {
-	const { images, onChange } = props;
+	const { images, onChange, error } = props;
 
 	const imageItems: ImageItem[] = images.map((file) => ({
 		id: crypto.randomUUID(),
@@ -40,6 +41,7 @@ export function FormPhotos(props: FormPhotosProps) {
 				text='Image gallery'
 			/>
 			<p className={s.limit}>{images.length}/6 photos uploaded</p>
+			{error && <p className={s.error}>{error}</p>}
 			<div className={s.photos}>
 				{imageItems.map(({ id, preview }, index) => (
 					<ImagePreview

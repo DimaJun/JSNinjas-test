@@ -1,5 +1,7 @@
-import { CreateHeroFormChange } from '../../model/types/create';
+import { UseFormRegister } from 'react-hook-form';
+
 import { FormSectionTop } from '../FormSectionTop/FormSectionTop';
+import { HeroCreateForm } from '../../model/types/schema';
 
 import s from './FormMainInfo.module.scss';
 
@@ -7,15 +9,15 @@ import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
 
 interface FormMainInfoProps {
-	nickname: string;
-	realName: string;
-	catchPhrase: string;
-	onChange: CreateHeroFormChange;
+	register: UseFormRegister<HeroCreateForm>;
+	nickError?: string;
+	realNameError?: string;
+	phraseError?: string;
 	isEdit?: boolean;
 }
 
 export function FormMainInfo(props: FormMainInfoProps) {
-	const { nickname, realName, catchPhrase, onChange, isEdit = false } = props;
+	const { register, nickError, realNameError, phraseError, isEdit = false } = props;
 
 	return (
 		<Card
@@ -31,20 +33,20 @@ export function FormMainInfo(props: FormMainInfoProps) {
 					label='Superhero nickname'
 					placeholder='Superman'
 					disabled={isEdit}
-					value={nickname}
-					onChange={(e) => onChange('nickname', e.target.value)}
+					error={nickError}
+					{...register('nickname')}
 				/>
 				<Input
 					label='Real name'
 					placeholder='Clark Kent'
-					value={realName}
-					onChange={(e) => onChange('realName', e.target.value)}
+					error={realNameError}
+					{...register('realName')}
 				/>
 				<Input
 					label='Catch phrase'
 					placeholder='Look, up in the sky, its a bird, its a plane, its Superman!'
-					value={catchPhrase}
-					onChange={(e) => onChange('catchPhrase', e.target.value)}
+					error={phraseError}
+					{...register('catchPhrase')}
 				/>
 			</div>
 		</Card>

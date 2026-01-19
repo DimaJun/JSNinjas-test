@@ -1,6 +1,4 @@
-import { Hero } from '@/entities/Hero';
-
-export interface CreateHeroFormData extends Omit<Hero, 'images' | 'id'> {
+export interface CreateHeroFormData {
 	images: File[];
 }
 

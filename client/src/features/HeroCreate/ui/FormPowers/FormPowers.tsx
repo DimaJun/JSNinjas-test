@@ -1,7 +1,8 @@
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
+import { UseFormSetValue } from 'react-hook-form';
 
-import { CreateHeroFormChange } from '../../model/types/create';
+import { HeroCreateForm } from '../../model/types/schema';
 import { FormSectionTop } from '../FormSectionTop/FormSectionTop';
 
 import s from './FormPowers.module.scss';
@@ -13,23 +14,25 @@ import { HeroTags } from '@/entities/Hero';
 
 interface FormPowersProps {
 	powers: string[];
-	onChange: CreateHeroFormChange;
+	setValue: UseFormSetValue<HeroCreateForm>;
+	error?: string;
 }
 
 export function FormPowers(props: FormPowersProps) {
-	const { powers, onChange } = props;
+	const { powers, setValue, error } = props;
 	const [tag, setTag] = useState('');
 
 	const onTagAdd = () => {
 		if (!tag.trim()) return;
-		onChange('superpowers', [...powers, tag.trim()]);
+		setValue('superpowers', [...powers, tag.trim()], { shouldValidate: true });
 		setTag('');
 	};
 
 	const onTagRemove = (tagToRemove: string) => {
-		onChange(
+		setValue(
 			'superpowers',
-			powers.filter((p) => p !== tagToRemove)
+			powers.filter((p) => p !== tagToRemove),
+			{ shouldValidate: true }
 		);
 	};
 
@@ -44,6 +47,7 @@ export function FormPowers(props: FormPowersProps) {
 					placeholder='Enter superpower'
 					value={tag}
 					onChange={(e) => setTag(e.target.value)}
+					error={error}
 				/>
 				<Button
 					className={s.addBtn}

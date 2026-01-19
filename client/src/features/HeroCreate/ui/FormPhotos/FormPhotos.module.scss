@@ -8,10 +8,16 @@
 }
 
 .limit {
-	margin-bottom: 16px;
+	margin-bottom: 8px;
 }
 
 .requirements {
 	font-size: var(--font-size-s);
 	color: var(--color-neutral);
+}
+
+.error {
+	font-size: 14px;
+	color: var(--color-error);
+	margin-bottom: 16px;
 }

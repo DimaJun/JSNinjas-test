@@ -31,8 +31,8 @@ export class CreateSuperheroDto {
 
 	@IsString()
 	@IsNotEmpty({ message: 'Catch phrase is required' })
-	@MaxLength(255, {
-		message: 'Catch phrase must be at most 255 characters long',
+	@MaxLength(200, {
+		message: 'Catch phrase must be at most 200 characters long',
 	})
 	catchPhrase: string;
 

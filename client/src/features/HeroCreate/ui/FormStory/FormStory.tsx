@@ -1,5 +1,7 @@
-import { CreateHeroFormChange } from '../../model/types/create';
+import { UseFormRegister } from 'react-hook-form';
+
 import { FormSectionTop } from '../FormSectionTop/FormSectionTop';
+import { HeroCreateForm } from '../../model/types/schema';
 
 import s from './FormStory.module.scss';
 
@@ -7,12 +9,12 @@ import { Card } from '@/shared/ui/Card';
 import { Textarea } from '@/shared/ui/Textarea';
 
 interface FormStoryProps {
-	story: string;
-	onChange: CreateHeroFormChange;
+	register: UseFormRegister<HeroCreateForm>;
+	error?: string;
 }
 
 export function FormStory(props: FormStoryProps) {
-	const { story, onChange } = props;
+	const { register, error } = props;
 
 	return (
 		<Card padding='24'>
@@ -25,10 +27,9 @@ export function FormStory(props: FormStoryProps) {
 				label='Tell the hero story'
 				placeholder='He was born Kal-El on the planet Krypton, before being rocketed to Earth as an infant by his scientist father Jor-El, moments before Kryptons destruction...'
 				rows={4}
-				value={story}
-				onChange={(e) => onChange('originDescription', e.target.value)}
+				error={error}
+				{...register('originDescription')}
 			/>
-			<p className={s.symbols}>{story.length} characters</p>
 		</Card>
 	);
 }
