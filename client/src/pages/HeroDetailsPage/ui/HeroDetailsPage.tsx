@@ -5,10 +5,11 @@ import s from './HeroDetailsPage.module.scss';
 
 import { getMainRoute } from '@/shared/config/router';
 import { Button } from '@/shared/ui/Button';
-import { HeroDetails, useGetHeroByIdQuery } from '@/entities/Hero';
+import { useGetHeroByIdQuery } from '@/entities/Hero';
 import { Page } from '@/shared/ui/Page';
 import { classNames } from '@/shared/helpers';
 import { useRemoveHeroMutation } from '@/features/HeroEdit';
+import { HeroDetails } from '@/features/HeroDetails';
 
 export function HeroDetailsPage() {
 	const { id } = useParams<{ id: string }>();
@@ -44,7 +45,7 @@ export function HeroDetailsPage() {
 
 				<div className={s.btns}>
 					<Button
-						className={s.edit}
+						className={s.remove}
 						Icon={SquarePen}
 						onClick={handleRemoveHero}
 					>

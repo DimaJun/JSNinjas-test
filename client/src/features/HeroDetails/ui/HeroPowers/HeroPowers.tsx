@@ -1,11 +1,10 @@
 import { Zap } from 'lucide-react';
 
-import { HeroTags } from '../../HeroTags/HeroTags';
-
 import s from './HeroPowers.module.scss';
 
 import { Card } from '@/shared/ui/Card';
 import { FormSectionTop } from '@/features/HeroCreate';
+import { HeroTags } from '@/entities/Hero';
 
 interface HeroPowersProps {
 	powers: string[];
