@@ -16,34 +16,34 @@ export function HeroInfoSkeleton() {
 				text='Information'
 				Icon={Info}
 			/>
-			<p className={s.infoRow}>
+			<div className={s.infoRow}>
 				<span>Nickname:</span>
 				<Skeleton
 					width='100px'
 					height='16px'
 				/>
-			</p>
-			<p className={s.infoRow}>
+			</div>
+			<div className={s.infoRow}>
 				<span>Real name:</span>
 				<Skeleton
 					width='100px'
 					height='16px'
 				/>
-			</p>
-			<p className={s.infoRow}>
+			</div>
+			<div className={s.infoRow}>
 				<span>Superpowers:</span>
 				<Skeleton
 					width='20px'
 					height='16px'
 				/>
-			</p>
-			<p className={s.infoRow}>
+			</div>
+			<div className={s.infoRow}>
 				<span>Photos:</span>
 				<Skeleton
 					width='20px'
 					height='16px'
 				/>
-			</p>
+			</div>
 		</Card>
 	);
 }

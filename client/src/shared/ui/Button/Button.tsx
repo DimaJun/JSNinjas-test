@@ -16,7 +16,7 @@ const mapPaddingToClass: Record<ButtonPadding, string> = {
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string;
 	padding?: ButtonPadding;
-	children: ReactNode;
+	children?: ReactNode;
 	Icon?: LucideIcon;
 }
 

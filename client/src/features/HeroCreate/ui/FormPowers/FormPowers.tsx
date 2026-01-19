@@ -26,6 +26,13 @@ export function FormPowers(props: FormPowersProps) {
 		setTag('');
 	};
 
+	const onTagRemove = (tagToRemove: string) => {
+		onChange(
+			'superpowers',
+			powers.filter((p) => p !== tagToRemove)
+		);
+	};
+
 	return (
 		<Card padding='24'>
 			<FormSectionTop
@@ -49,6 +56,7 @@ export function FormPowers(props: FormPowersProps) {
 			<HeroTags
 				className={s.powers}
 				tags={powers}
+				onRemove={(tag) => onTagRemove(tag)}
 			/>
 		</Card>
 	);
