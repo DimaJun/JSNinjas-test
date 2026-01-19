@@ -9,7 +9,7 @@ import { classNames } from '@/shared/helpers';
 
 const LIMIT = 5;
 
-export function MainPage() {
+function MainPage() {
 	const [page, setPage] = useState(1);
 
 	const { data } = useGetAllHeroesQuery({
@@ -30,3 +30,5 @@ export function MainPage() {
 		</Page>
 	);
 }
+
+export default MainPage;

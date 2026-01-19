@@ -8,7 +8,7 @@ import { Page } from '@/shared/ui/Page';
 import { classNames } from '@/shared/helpers';
 import { HeroCreateForm } from '@/features/HeroCreate';
 
-export function CreateHeroPage() {
+function CreateHeroPage() {
 	return (
 		<Page className={classNames(s.CreateHeroPage, {}, [])}>
 			<Link
@@ -23,3 +23,5 @@ export function CreateHeroPage() {
 		</Page>
 	);
 }
+
+export default CreateHeroPage;

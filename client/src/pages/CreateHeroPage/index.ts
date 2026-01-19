@@ -1,1 +1,1 @@
-export { CreateHeroPage } from './ui/CreateHeroPage';
+export { CreateHeroPageLazy as CreateHeroPage } from './ui/CreateHeroPage.lazy';

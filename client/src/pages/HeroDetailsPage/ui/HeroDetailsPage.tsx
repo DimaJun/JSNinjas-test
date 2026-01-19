@@ -11,7 +11,7 @@ import { classNames } from '@/shared/helpers';
 import { useRemoveHeroMutation } from '@/features/HeroEdit';
 import { HeroDetails } from '@/features/HeroDetails';
 
-export function HeroDetailsPage() {
+function HeroDetailsPage() {
 	const { id } = useParams<{ id: string }>();
 	const navigate = useNavigate();
 
@@ -64,3 +64,5 @@ export function HeroDetailsPage() {
 		</Page>
 	);
 }
+
+export default HeroDetailsPage;

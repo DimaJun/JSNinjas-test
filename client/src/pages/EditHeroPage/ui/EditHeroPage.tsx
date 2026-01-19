@@ -8,7 +8,7 @@ import { classNames } from '@/shared/helpers';
 import { useGetHeroByIdQuery } from '@/entities/Hero';
 import { HeroEditForm } from '@/features/HeroEdit';
 
-export function EditHeroPage() {
+function EditHeroPage() {
 	const { id } = useParams<{ id: string }>();
 
 	const { data: hero, isError } = useGetHeroByIdQuery({ id }, { skip: !id });
@@ -31,3 +31,5 @@ export function EditHeroPage() {
 		</Page>
 	);
 }
+
+export default EditHeroPage;

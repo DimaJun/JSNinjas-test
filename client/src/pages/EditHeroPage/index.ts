@@ -1,1 +1,1 @@
-export { EditHeroPage } from './ui/EditHeroPage';
+export { EditHeroPageLazy as EditHeroPage } from './ui/EditHeroPage.lazy';

@@ -1,1 +1,1 @@
-export { HeroDetailsPage } from './ui/HeroDetailsPage';
+export { HeroDetailsPageLazy as HeroDetailsPage } from './ui/HeroDetailsPage.lazy';
