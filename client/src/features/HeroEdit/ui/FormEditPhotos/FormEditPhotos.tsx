@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useEffect } from 'react';
 
 import { EditHeroFormChange } from '../../model/types/edit';
 
@@ -14,12 +14,15 @@ interface HeroEditPhotosProps {
 	currentPhotos: string[];
 	images: File[];
 	imagesToRemove: string[];
+	error?: string;
+	setError?: Dispatch<SetStateAction<string>>;
 	onChange: (files: File[]) => void;
 	onCurrentRemove: EditHeroFormChange;
 }
 
 export function HeroEditPhotos(props: HeroEditPhotosProps) {
-	const { currentPhotos, images, imagesToRemove, onChange, onCurrentRemove } = props;
+	const { currentPhotos, images, imagesToRemove, error, setError, onChange, onCurrentRemove } =
+		props;
 
 	const imageItems: ImageItem[] = images.map((file) => ({
 		id: crypto.randomUUID(),
@@ -32,6 +35,12 @@ export function HeroEditPhotos(props: HeroEditPhotosProps) {
 	const onSelectItems = (e: ChangeEvent<HTMLInputElement>) => {
 		handleFileSelect(e, images, onChange);
 	};
+
+	useEffect(() => {
+		if (totalImages === 0) {
+			setError('Add at least one photo');
+		}
+	}, [setError, totalImages]);
 
 	const onImageRemove = (index: number) => {
 		URL.revokeObjectURL(imageItems[index].id);
@@ -63,7 +72,8 @@ export function HeroEditPhotos(props: HeroEditPhotosProps) {
 						/>
 					))}
 				</div>
-				<p>Add images:</p>
+				<p>Add images: {totalImages === 6 && 'MAX'}</p>
+				<p className={s.error}>{error}</p>
 				<div className={s.grid}>
 					{imageItems.map(({ id, preview }, index) => (
 						<ImagePreview

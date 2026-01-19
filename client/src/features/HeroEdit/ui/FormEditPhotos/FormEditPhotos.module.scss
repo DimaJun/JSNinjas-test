@@ -9,3 +9,8 @@
 	grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
 	gap: 16px;
 }
+
+.error {
+	font-size: 14px;
+	color: var(--color-error);
+}

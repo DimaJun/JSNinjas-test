@@ -16,7 +16,21 @@ interface HeroEditFormProps {
 export function HeroEditForm(props: HeroEditFormProps) {
 	const { hero } = props;
 
-	const { formData, handleSubmit, handleChange, navigate } = useHeroEdit(hero);
+	const {
+		formData,
+		handleSubmit,
+		onSubmit,
+		handleChange,
+		errors,
+		watch,
+		setValue,
+		register,
+		fileError,
+		setFileError,
+		navigate,
+	} = useHeroEdit(hero);
+
+	const powers = watch('superpowers');
 
 	useEffect(() => {
 		console.log(formData);
@@ -25,27 +39,29 @@ export function HeroEditForm(props: HeroEditFormProps) {
 	return (
 		<form
 			className={s.form}
-			onSubmit={handleSubmit}
+			onSubmit={handleSubmit(onSubmit)}
 		>
 			<FormMainInfo
-				nickname={formData.nickname}
-				realName={formData.realName}
-				catchPhrase={formData.catchPhrase}
-				onChange={handleChange}
+				register={register}
+				realNameError={errors?.realName?.message}
+				phraseError={errors?.catchPhrase?.message}
 				isEdit
 			/>
 			<FormStory
-				story={formData.originDescription}
-				onChange={handleChange}
+				register={register}
+				error={errors?.originDescription?.message}
 			/>
 			<FormPowers
-				powers={formData.superpowers}
-				onChange={handleChange}
+				powers={powers}
+				setValue={setValue}
+				error={errors?.superpowers?.message}
 			/>
 			<HeroEditPhotos
 				currentPhotos={formData.currentImages}
 				images={formData.images}
 				imagesToRemove={formData.imagesToRemove}
+				error={fileError}
+				setError={setFileError}
 				onChange={(files: File[]) => handleChange('images', files)}
 				onCurrentRemove={handleChange}
 			/>
