@@ -1,13 +1,13 @@
 # Superhero App
 
-This is a **Node.js** project with a React frontend (presumably), using **PostgreSQL** as the database. The project consists of two parts: **server** and **client**.
+This is a **Nest.js** project with a **React** frontend, using **PostgreSQL** as the database. The project consists of two parts: **server** and **client**.
 
 ---
 
 ## 💻 Requirements
 
-- **Node.js**: version **20+**
-- **PostgreSQL**: running server
+- **Node.js**: version **24+**
+- **PostgreSQL**: running server (with the created database)
 - npm (Node Package Manager)
 - Git (for cloning the repository)
 
@@ -15,26 +15,24 @@ This is a **Node.js** project with a React frontend (presumably), using **Postgr
 
 ## ⚡ Installation
 
-Clone the repository:
+### Cloning:
 
 ```bash
-git clone <your_repository>
-cd <project_folder>
+git clone https://github.com/DimaJun/JSNinjas-test.git
+cd JSNinjas-test
+```
 
-# In the server folder
-cd server
+### In the client folder
+```bash
 npm install
+npm run start:dev
+```
 
-# In the client folder
-cd ../client
+### In the server folder
+```bash
 npm install
-
-cp .env.example .env
-PORT=3000
-DATABASE_URL=postgresql://username:password@localhost:5432/dbname
-
-cd server
-npm run start:dev
-
-cd client
-npm run start:dev
+cp .env.example .env (change variables to yours)
+npx prisma migrate deploy
+npx prisma generate
+npm run start dev
+```
