@@ -11,6 +11,10 @@ const createHeroApi = baseApi.injectEndpoints({
 					'Content-Type': 'multipart/form-data',
 				},
 			}),
+			invalidatesTags: (result) => [
+				{ type: 'Hero', id: 'LIST' },
+				{ type: 'Hero', id: result?.id },
+			],
 		}),
 	}),
 });

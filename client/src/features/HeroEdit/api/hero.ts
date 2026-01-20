@@ -12,12 +12,17 @@ const editHeroApi = baseApi.injectEndpoints({
 					'Content-Type': 'multipart/form-data',
 				},
 			}),
+			invalidatesTags: (result) => [
+				{ type: 'Hero', id: 'LIST' },
+				{ type: 'Hero', id: result?.id },
+			],
 		}),
 		removeHero: builder.mutation<void, { id: string }>({
 			query: ({ id }) => ({
 				url: `/superhero/remove/${id}`,
 				method: 'DELETE',
 			}),
+			invalidatesTags: () => [{ type: 'Hero', id: 'LIST' }],
 		}),
 	}),
 });
