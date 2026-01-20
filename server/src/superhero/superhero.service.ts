@@ -51,7 +51,7 @@ export class SuperheroService {
 			return { id: hero.id };
 		} catch (e) {
 			if (e instanceof PrismaClientKnownRequestError && e.code === 'P2002') {
-				throw new BadRequestException('Such a superhero already exists!');
+				throw new BadRequestException('Such a superhero already exists! Change nickname!');
 			}
 			throw e;
 		}

@@ -33,7 +33,20 @@ function HeroDetailsPage() {
 	}
 
 	if (isError || !hero) {
-		return <div className={s.not_found}>Superhero not found!</div>;
+		return (
+			<Page className={classNames(s.HeroDetails, {}, [])}>
+				<div className={s.top}>
+					<Link
+						className={s.backToList}
+						to={getMainRoute()}
+					>
+						<ArrowLeft className={s.icon} />
+						Back to list
+					</Link>
+				</div>
+				<div className={s.not_found}>Superhero not found!</div>
+			</Page>
+		);
 	}
 
 	const handleRemoveHero = async () => {

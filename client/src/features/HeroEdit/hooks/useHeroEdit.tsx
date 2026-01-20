@@ -69,8 +69,12 @@ export function useHeroEdit(hero: Hero) {
 			showToast.updateSuccess(toastId, 'Success!');
 			navigate(`/hero/${updated.id}`);
 		} catch (e) {
-			showToast.updateError(toastId, 'Error!');
-			console.log(e);
+			const error = e?.data?.message;
+			if (error) {
+				showToast.updateError(toastId, error);
+			} else {
+				showToast.updateError(toastId, 'Error!');
+			}
 		}
 	};
 

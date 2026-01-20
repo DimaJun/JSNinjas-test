@@ -25,6 +25,14 @@ function MainPage() {
 		);
 	}
 
+	if (!data || data.heroes.length === 0) {
+		return (
+			<Page className={s.MainPage}>
+				<p className={s.noHeroes}>There are no heroes yet, try creating one.</p>
+			</Page>
+		);
+	}
+
 	return (
 		<Page className={classNames(s.MainPage, {}, [])}>
 			<HeroesList heroes={data?.heroes} />
